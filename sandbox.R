@@ -1,4 +1,4 @@
-# Initial peek at the data
+# Sandbox 
 
 # load libraries
 library(tidyverse)
@@ -11,3 +11,12 @@ pub_sum <- read_csv("data/publisher_summary.csv")
 vg_sales <- read_csv("data/video_games_sales.csv")
 y_trends <- read_csv("data/yearly_trends.csv")
 
+
+# initial peek
+summary(games)
+
+# some variables are loaded as numeric rather than factor
+games <- games |>
+  mutate(
+    
+  )
