@@ -12,11 +12,13 @@ vg_sales <- read_csv("data/video_games_sales.csv")
 y_trends <- read_csv("data/yearly_trends.csv")
 
 
-# initial peek
+# Games Data ----
+
+## Initial Look ----
 summary(games)
 
 # some variables are loaded as numeric or character rather than factor
-# cleaning variables
+## Cleaning variables ----
 games <- games |>
   mutate(
     platform = as.factor(platform),
@@ -39,3 +41,4 @@ games <- games |>
     goty_nominated = as.factor(goty_nominated),
     goty_won = as.factor(goty_won)
   )
+
