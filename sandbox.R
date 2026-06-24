@@ -26,8 +26,6 @@ games <- games |>
     platform_maker = as.factor(platform_maker),
     platform_generation = as.factor(platform_generation),
     genre = as.factor(genre),
-    publisher = as.factor(publisher),
-    developer = as.factor(developer),
     publisher_region = as.factor(publisher_region),
     publisher_tier = as.factor(publisher_tier),
     esrb_rating = as.factor(esrb_rating),
@@ -41,4 +39,27 @@ games <- games |>
     goty_nominated = as.factor(goty_nominated),
     goty_won = as.factor(goty_won)
   )
+
+
+games |>
+  count(platform) |>
+  arrange(-n) |>
+  print(n = 33)
+
+
+games |>
+  ggplot(aes(x = genre)) +
+  geom_bar()
+
+games |>
+  ggplot(aes(x = esrb_rating)) +
+  geom_bar()
+
+games |>
+  ggplot(aes(x = esrb_rating)) +
+  geom_bar()
+
+games |>
+  ggplot(aes(x = online_multiplayer)) +
+  geom_bar()
 
