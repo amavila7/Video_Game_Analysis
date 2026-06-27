@@ -190,6 +190,7 @@ summary(genre_sum)
 
 # none of the variables appear to be encoded incorrectly 
 # no obvious data cleansing so far
+# there are only 20 observations !
 
 ## Variables ----
 
@@ -202,6 +203,94 @@ genre_sum |>
   ggplot(aes(x = titles)) +
   geom_histogram()
 
+# plot to help understand the relationship of titles and genres
 genre_sum |>
   ggplot(aes(x = titles, y = genre)) +
   geom_boxplot()
+
+# mild right skew due to dollar amount
+# money tends to have a right skew especially when > $1000
+genre_sum |>
+  ggplot(aes(x = total_sales_m)) +
+  geom_density()
+
+# also mild right skew since it is the avg of a heavy right skew
+genre_sum |>
+  ggplot(aes(x = avg_sales_m)) +
+  geom_density()
+
+# mild left skew with a peak at 74
+genre_sum |>
+  ggplot(aes(x = avg_metacritic)) +
+  geom_density()
+
+# mild left skew with a peak at 7.5
+genre_sum |>
+  ggplot(aes(x = avg_user_score)) +
+  geom_density()
+
+
+# just under 50% got goty nominated
+genre_sum |>
+  ggplot(aes(x = pct_goty_nominated)) +
+  geom_density()
+
+# heavy right skew - htlb?
+genre_sum |>
+  ggplot(aes(x = avg_htlb_main)) +
+  geom_density()
+
+# peak at 0% and 1%
+genre_sum |>
+  ggplot(aes(x = pct_online)) +
+  geom_density() +
+  geom_rug()
+
+# peak at 0.62
+genre_sum |>
+  ggplot(aes(x = pct_dlc)) +
+  geom_density()
+
+# peak at 0.25 and 0.5 
+genre_sum |>
+  ggplot(aes(x = pct_microtransactions)) +
+  geom_histogram()
+
+###
+# Note: there are a lot of money related variables that will need a power transformation
+# due to the small number of observations, I may not use this dataset
+###
+
+# Platform Summary ----
+
+## Initial Look ----
+
+# there are only 33 observations so we will proceed with caution
+
+summary(plat_sum)
+
+## Variables ----
+
+# top genre variable repeats "Action" for all observations
+plat_sum |>
+  distinct(top_genre)
+
+  
+
+
+
+# Publisher Summary ----
+
+## Initial Look ----
+
+
+
+# Video Game Sales Summary ----
+
+## Initial Look ----
+
+
+
+# Yearly Trends ----
+
+## Initial Look ----
