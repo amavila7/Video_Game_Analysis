@@ -353,3 +353,7 @@ vg_sales |>
 
 # Considering the Games Data contained essentially all the same information with 
 # more observations, I believe I can disregard these extra data sets for now
+
+# Saving Data Changes ----
+write_csv(games, file = "data/games_cleaned.csv")
+
