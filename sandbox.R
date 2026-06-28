@@ -291,7 +291,7 @@ summary(vg_sales)
 
 # year is a character variable that will make numeric or a factor
 # genre is character which could be fine, but might be more helpful as a factor
-# possibly the same with publisher
+# possibly the same with platform
 
 ## Data Cleansing ----
 
@@ -299,8 +299,55 @@ vg_sales <- vg_sales |>
   mutate(
     Year = as.numeric(Year),
     Genre = as.factor(Genre),
-    Publisher = as.factor(Publisher)
+    Platform = as.factor(Platform)
   )
 
 ## Variables ----
+
+
+# range of years is 1980 to 2020
+vg_sales |>
+  ggplot(aes(x = Year)) +
+  geom_density()
+
+# 12 genres in this data set
+vg_sales |>
+  ggplot(aes(x = Genre)) +
+  geom_bar()
+
+# 31 different platforms in this data set
+vg_sales |>
+  ggplot(aes(x = Platform)) +
+  geom_bar()
+
+# finiding most popular platforms
+# DS, PS2, PS3 are the top 3 
+vg_sales |>
+  count(Platform) |>
+  arrange(desc(n))
+
+# extreme right skew
+vg_sales |>
+  ggplot(aes(x = NA_Sales)) +
+  geom_density()
+
+# similar to NA Sales
+vg_sales |>
+  ggplot(aes(x = EU_Sales)) +
+  geom_density()
+
+# similar to NA Sales
+vg_sales |>
+  ggplot(aes(x = JP_Sales)) +
+  geom_density()
+
+# similar to NA Sales
+vg_sales |>
+  ggplot(aes(x = Other_Sales)) +
+  geom_density()
+
+# similar to NA Sales
+vg_sales |>
+  ggplot(aes(x = Global_Sales)) +
+  geom_density()
 
