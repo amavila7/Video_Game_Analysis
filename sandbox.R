@@ -351,3 +351,5 @@ vg_sales |>
   ggplot(aes(x = Global_Sales)) +
   geom_density()
 
+# Considering the Games Data contained essentially all the same information with 
+# more observations, I believe I can disregard these extra data sets for now
