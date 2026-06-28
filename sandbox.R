@@ -275,22 +275,32 @@ summary(plat_sum)
 plat_sum |>
   distinct(top_genre)
 
-  
+# This dataset shares variables with the genre summary data, publisher data, &
+# yearly trend data however, all the datasets have varying amounts of observations
+# I might disregard these datasets due to the low number of observations and repetition of
+# variables or I might try to combine the data
 
-
-
-# Publisher Summary ----
-
-## Initial Look ----
-
+# Lets check the video game sales set first
 
 
 # Video Game Sales Summary ----
 
 ## Initial Look ----
 
+summary(vg_sales)
 
+# year is a character variable that will make numeric or a factor
+# genre is character which could be fine, but might be more helpful as a factor
+# possibly the same with publisher
 
-# Yearly Trends ----
+## Data Cleansing ----
 
-## Initial Look ----
+vg_sales <- vg_sales |>
+  mutate(
+    Year = as.numeric(Year),
+    Genre = as.factor(Genre),
+    Publisher = as.factor(Publisher)
+  )
+
+## Variables ----
+
