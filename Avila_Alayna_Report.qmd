@@ -9,11 +9,26 @@ date: today
 ## Overview
 
 
-# Data & Question
+# Data & Questions
 
 ## About the Data
 
-## Question
+## Questions
+
+**What time of year is best for releasing an Indie video game?**
+
+**Do certain genres sell more during certain seasons? Or do some genres usually sell more than others?**
+
+**Are multiplayer games increase sales?**
+
+**How does microtransactions in a video game impact sales and launch price?**
+
+### Prediction
+
+**What features or characteristics of a game are most likely to win Game of the Year?**
+
+**Which traits of a video game go into defining the launch price of the video game?**
+
 
 
 # Procedure
