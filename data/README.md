@@ -1,6 +1,6 @@
 # Dataset Codebooks
 
-## Game Data
+## Games Data & Games Cleaned Data
 
 "50,000 video game records spanning 47 years of gaming history across 33 platforms, 51 publishers, and 20 genres. Combines regional sales (NA/EU/JP/Other/Global), Metacritic critic and user scores, ESRB ratings, publisher intelligence, and engineered columns not found in existing public datasets." This is according to the Kaggle overview for this dataset. This dataset gets updated annually by Meruva Kodanda Suraj. He is a datasets expert with several badges, datasets, and competitions connected to his Kaggle account. 
 
