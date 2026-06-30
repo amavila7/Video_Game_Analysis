@@ -17,6 +17,10 @@ y_trends <- read_csv("data/yearly_trends.csv")
 ## Initial Look ----
 summary(games)
 
+# missingness check
+naniar::miss_var_summary(games)
+# no missingness
+
 # some variables are loaded as numeric or character rather than factor
 ## Cleaning variables ----
 games <- games |>
