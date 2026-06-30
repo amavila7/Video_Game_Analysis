@@ -15,6 +15,8 @@ date: today
 
 ## Questions
 
+### Inferential 
+
 **What time of year is best for releasing an Indie video game?**
 
 **Do certain genres sell more during certain seasons? Or do some genres usually sell more than others?**
