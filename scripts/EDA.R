@@ -43,3 +43,45 @@ games_cleaned |>
 games_cleaned |>
   ggplot(aes(x = year, y = platform)) +
   geom_boxplot()
+
+
+   
+# Do certain genres usually sell more than others?
+
+# global sales
+games_cleaned |>
+  ggplot(aes(x = global_sales_million, y = genre)) +
+  geom_boxplot()
+
+# highest sales
+# Sports, Shooter, Sandbox, Fighting, & Action have the greatest sales globally
+
+# lowest sales
+# visual novel, strategy, rhythm, & Idle/clicker
+
+# launch price vs genre
+games_cleaned |>
+  ggplot(aes(x = launch_price_usd, y = genre)) +
+  geom_boxplot()
+
+# the spread per genre is quite evenly centered around $40
+# survival horror, sports, simulation, shooter, puzzle, MMORPG, and Idle/clicker 
+# are around $50
+# the entire range is $0-$80 without any visual outliers
+
+# launch price vs global sales
+games_cleaned |>
+  ggplot(aes(x = global_sales_million, y = launch_price_usd)) +
+  geom_point()
+
+# launch price seems to be more categorical 
+# the best sales are the free games or games under $10
+# there is an increase of global sales for games sold at $50+
+
+
+
+
+
+# Do multiplayer games increase sales?
+   
+# How do microtransactions in a video game impact sales and launch price?
