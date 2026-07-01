@@ -28,7 +28,6 @@ games_cleaned <- read_csv("data/games.csv") |>
     goty_won = as.factor(goty_won)
   )
 
-
 # Genre vs Year
 games_cleaned |>
   ggplot(aes(x = year, y = genre)) +
@@ -47,6 +46,7 @@ games_cleaned |>
 
    
 # Do certain genres usually sell more than others?
+
 
 # global sales
 games_cleaned |>
@@ -78,10 +78,66 @@ games_cleaned |>
 # the best sales are the free games or games under $10
 # there is an increase of global sales for games sold at $50+
 
+# 14 distinct prices - changing this to be a factor
+games_cleaned |>
+  distinct(launch_price_usd) 
 
+games_cleaned <- games_cleaned |>
+  mutate(launch_price_usd = as.factor(launch_price_usd))
+
+# boxplot - interesting how it changes to more exact pricing
+games_cleaned |>
+  ggplot(aes(x = global_sales_million, y = launch_price_usd)) +
+  geom_boxplot()
+
+# launched price vs genre
+games_cleaned |>
+  ggplot(aes(y = genre, fill = launch_price_usd)) +
+  geom_bar()
+
+# No genre is cheaper than the other
+# all genres have a large range of prices
+# there are fewer video games for different genres
+# action, sports, shooter, and role-playing are the most popular
+
+
+games_cleaned |>
+  ggplot() +
+  geom_violin(aes(x = global_sales_million, y = genre)) +
+  geom_boxplot(aes(x = global_sales_million, y = genre, fill = launch_price_usd))
 
 
 
 # Do multiplayer games increase sales?
    
+games_cleaned |>
+  ggplot(aes(x = global_sales_million, y = online_multiplayer)) +
+  geom_boxplot()
+
+games_cleaned |>
+  ggplot(aes(x = na_sales_million, y = online_multiplayer)) +
+  geom_boxplot()
+
+games_cleaned |>
+  ggplot(aes(x = jp_sales_million, y = online_multiplayer)) +
+  geom_boxplot()
+
+games_cleaned |>
+  ggplot(aes(x = eu_sales_million, y = online_multiplayer)) +
+  geom_boxplot()
+
+games_cleaned |>
+  ggplot(aes(x = other_sales_million, y = online_multiplayer)) +
+  geom_boxplot()
+
+
 # How do microtransactions in a video game impact sales and launch price?
+
+games_cleaned |>
+  ggplot(aes(y = launch_price_usd, fill = microtransactions)) +
+  geom_bar()
+
+# majority of the games don't have microtransactions
+# some free games do have microtransactions
+
+
