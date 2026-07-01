@@ -133,11 +133,17 @@ games_cleaned |>
 
 # How do microtransactions in a video game impact sales and launch price?
 
+# launched price vs microtransactions
 games_cleaned |>
   ggplot(aes(y = launch_price_usd, fill = microtransactions)) +
   geom_bar()
 
 # majority of the games don't have microtransactions
-# some free games do have microtransactions
+# some free games do have microtransactions which is ironic since the game 
+# itself was free
 
+# global sales vs micro
+games_cleaned |>
+  ggplot(aes(x = global_sales_million, color = microtransactions)) +
+  geom_density()
 
