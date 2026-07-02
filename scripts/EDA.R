@@ -5,6 +5,15 @@
 
 # load libraries
 library(tidyverse)
+library(ggthemes)
+library(showtext)
+
+# free font from google thats similar to Akkurate Pro
+font_add_google("Noto Serif")
+font_add_google("Poppins")
+
+# showtext auto and add font
+showtext_auto()
 
 # load data
 games_cleaned <- read_csv("data/games.csv") |>
@@ -29,9 +38,42 @@ games_cleaned <- read_csv("data/games.csv") |>
   )
 
 # Genre vs Year
-games_cleaned |>
+
+y_vs_genre_fig <- games_cleaned |>
   ggplot(aes(x = year, y = genre)) +
-  geom_boxplot()
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Year Released vs Genre",
+    x = "Year",
+    y = "Genre"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
+
+
+
+y_vs_genre_plattype_fig <- games_cleaned |>
+  ggplot(aes(x = year, y = genre, fill = platform_type)) +
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Year Released vs Genre",
+    x = "Year",
+    y = "Genre",
+    fill = "Platform Type"
+  ) +
+  theme(
+    legend.title = element_text(),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
 
 # it appears video games were mainly popular from early 2000s to late 2010s
 # I'm surprised the spread doesn't extend to 2020 and beyond due to the pandemic
@@ -146,4 +188,6 @@ games_cleaned |>
 games_cleaned |>
   ggplot(aes(x = global_sales_million, color = microtransactions)) +
   geom_density()
+
+
 
