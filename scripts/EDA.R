@@ -81,9 +81,26 @@ y_vs_genre_plattype_fig <- games_cleaned |>
 
 
 # Platform vs Year
-games_cleaned |>
+plat_vs_year <- games_cleaned |>
   ggplot(aes(x = year, y = platform)) +
-  geom_boxplot()
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Year Released vs Platform Played",
+    x = "Year",
+    y = "Platform"
+  ) +
+  theme(
+    legend.title = element_text(),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
+
+# shows the lifetimes of all the platforms 
+# obvi the newer platforms have more popularity more recently 
+# PC has been going strong since the start
 
 
    
@@ -91,9 +108,23 @@ games_cleaned |>
 
 
 # global sales
-games_cleaned |>
+gsales_vs_genre <- games_cleaned |>
   ggplot(aes(x = global_sales_million, y = genre)) +
-  geom_boxplot()
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Global Sales vs Genre",
+    x = "Global Sales\n(millions)",
+    y = "Genre",
+    fill = "Platform Type"
+  ) +
+  theme(
+    legend.title = element_text(),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
 
 # highest sales
 # Sports, Shooter, Sandbox, Fighting, & Action have the greatest sales globally
@@ -103,8 +134,8 @@ games_cleaned |>
 
 # launch price vs genre
 games_cleaned |>
-  ggplot(aes(x = launch_price_usd, y = genre)) +
-  geom_boxplot()
+  ggplot(aes(fill = launch_price_usd, y = genre)) +
+  geom_bar()
 
 # the spread per genre is quite evenly centered around $40
 # survival horror, sports, simulation, shooter, puzzle, MMORPG, and Idle/clicker 
