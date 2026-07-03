@@ -133,6 +133,28 @@ gsales_vs_genre <- games_cleaned |>
 # visual novel, strategy, rhythm, & Idle/clicker
 
 # launch price vs genre
+lp_vs_genre <- games_cleaned |>
+  ggplot(aes(x = launch_price_usd, y = genre)) +
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Launched Price vs Genre",
+    x = "Launch Price \n(USD)",
+    y = "Genre",
+    fill = "Platform Type"
+  ) +
+  theme(
+    legend.title = element_text(),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
+
+games_cleaned <- games_cleaned |>
+  mutate(launch_price_usd = as.factor(launch_price_usd))
+
+# launch price vs genre
 games_cleaned |>
   ggplot(aes(fill = launch_price_usd, y = genre)) +
   geom_bar()
@@ -154,9 +176,6 @@ games_cleaned |>
 # 14 distinct prices - changing this to be a factor
 games_cleaned |>
   distinct(launch_price_usd) 
-
-games_cleaned <- games_cleaned |>
-  mutate(launch_price_usd = as.factor(launch_price_usd))
 
 # boxplot - interesting how it changes to more exact pricing
 games_cleaned |>
