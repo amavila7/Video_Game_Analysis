@@ -155,14 +155,34 @@ games_cleaned <- games_cleaned |>
   mutate(launch_price_usd = as.factor(launch_price_usd))
 
 # launch price vs genre
-games_cleaned |>
+genre_w_lp <- games_cleaned |>
   ggplot(aes(fill = launch_price_usd, y = genre)) +
-  geom_bar()
+  geom_bar() +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Genre with Launched Price",
+    x = "",
+    y = "Genre",
+    fill = "Launch Price \n(USD)"
+  ) +
+  theme(
+    legend.title = element_text(),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
 
 # the spread per genre is quite evenly centered around $40
 # survival horror, sports, simulation, shooter, puzzle, MMORPG, and Idle/clicker 
 # are around $50
 # the entire range is $0-$80 without any visual outliers
+
+# No genre is cheaper than the other
+# all genres have a large range of prices
+# there are fewer video games for different genres
+# action, sports, shooter, and role-playing are the most popular
+
 
 # launch price vs global sales
 games_cleaned |>
@@ -178,21 +198,24 @@ games_cleaned |>
   distinct(launch_price_usd) 
 
 # boxplot - interesting how it changes to more exact pricing
-games_cleaned |>
+lp_vs_global_sales <- games_cleaned |>
   ggplot(aes(x = global_sales_million, y = launch_price_usd)) +
-  geom_boxplot()
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Genre with Launched Price",
+    x = "Global Sales \n(Millions USD)",
+    y = "Launch Price \n(USD)"
+  ) +
+  theme(
+    legend.title = element_text(),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
 
-# launched price vs genre
-games_cleaned |>
-  ggplot(aes(y = genre, fill = launch_price_usd)) +
-  geom_bar()
-
-# No genre is cheaper than the other
-# all genres have a large range of prices
-# there are fewer video games for different genres
-# action, sports, shooter, and role-playing are the most popular
-
-
+# adding all 3
 games_cleaned |>
   ggplot() +
   geom_violin(aes(x = global_sales_million, y = genre)) +
@@ -204,7 +227,20 @@ games_cleaned |>
    
 games_cleaned |>
   ggplot(aes(x = global_sales_million, y = online_multiplayer)) +
-  geom_boxplot()
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Genre with Launched Price",
+    x = "Global Sales \n(Millions USD)",
+    y = "Launch Price \n(USD)"
+  ) +
+  theme(
+    legend.title = element_text(),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
 
 games_cleaned |>
   ggplot(aes(x = na_sales_million, y = online_multiplayer)) +
