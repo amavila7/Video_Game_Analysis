@@ -27,14 +27,23 @@ games_cleaned <- read_csv("data/games.csv") |>
     publisher_tier = as.factor(publisher_tier),
     esrb_rating = as.factor(esrb_rating),
     is_sequel = as.factor(is_sequel),
-    online_multiplayer = as.factor(online_multiplayer),
+    is_sequel = fct_recode(is_sequel, "Yes" = "1", "No" = "0"),
+    online_multiplayer = factor(online_multiplayer),
+    online_multiplayer = fct_recode(online_multiplayer, "Yes" = "1", "No" = "0"),
     dlc_released = as.factor(dlc_released),
+    dlc_released = fct_recode(dlc_released, "Yes" = "1", "No" = "0"),
     microtransactions = as.factor(microtransactions),
+    microtransactions = fct_recode(microtransactions, "Yes" = "1", "No" = "0"),
     loot_boxes = as.factor(loot_boxes),
+    loot_boxes = fct_recode(loot_boxes, "Yes" = "1", "No" = "0"),
     game_pass_available = as.factor(game_pass_available),
+    game_pass_available = fct_recode(game_pass_available, "Yes" = "1", "No" = "0"),
     vr_support = as.factor(vr_support),
+    vr_support = fct_recode(vr_support, "Yes" = "1", "No" = "0"),
     goty_nominated = as.factor(goty_nominated),
-    goty_won = as.factor(goty_won)
+    goty_nominated = fct_recode(goty_nominated, "Yes" = "1", "No" = "0"),
+    goty_won = as.factor(goty_won),
+    goty_won = fct_recode(goty_won, "Yes" = "1", "No" = "0"),
   )
 
 # Genre vs Year
@@ -225,14 +234,14 @@ games_cleaned |>
 
 # Do multiplayer games increase sales?
    
-games_cleaned |>
+mutli_vs_games_cleaned |>
   ggplot(aes(x = global_sales_million, y = online_multiplayer)) +
   geom_boxplot(color = "darkgreen") +
   theme_minimal() +
   labs(
-    title = "Distribution of Genre with Launched Price",
+    title = "Distribution of Global Sales \nvs Mutlitplayer",
     x = "Global Sales \n(Millions USD)",
-    y = "Launch Price \n(USD)"
+    y = "Multiplayer"
   ) +
   theme(
     legend.title = element_text(),
@@ -240,7 +249,10 @@ games_cleaned |>
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
     plot.title.position = "panel"
-  )
+  ) +
+  scale_x_continuous(limits = c(0, 500))
+
+
 
 games_cleaned |>
   ggplot(aes(x = na_sales_million, y = online_multiplayer)) +
