@@ -234,7 +234,7 @@ games_cleaned |>
 
 # Do multiplayer games increase sales?
    
-mutli_vs_games_cleaned |>
+mutli_vs_games_cleaned <- games_cleaned |>
   ggplot(aes(x = global_sales_million, y = online_multiplayer)) +
   geom_boxplot(color = "darkgreen") +
   theme_minimal() +
@@ -254,29 +254,97 @@ mutli_vs_games_cleaned |>
 
 
 
-games_cleaned |>
+nas_vs_multi <- games_cleaned |>
   ggplot(aes(x = na_sales_million, y = online_multiplayer)) +
-  geom_boxplot()
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Sales in North America \nvs Mutlitplayer",
+    x = "Sales in North America \n(Millions USD)",
+    y = "Multiplayer"
+  ) +
+  theme(
+    legend.title = element_text(),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
 
-games_cleaned |>
+
+jps_vs_multi <- games_cleaned |>
   ggplot(aes(x = jp_sales_million, y = online_multiplayer)) +
-  geom_boxplot()
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Sales in Japan \nvs Mutlitplayer",
+    x = "Sales in Japan \n(Millions USD)",
+    y = "Multiplayer"
+  ) +
+  theme(
+    legend.title = element_text(),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  ) 
 
-games_cleaned |>
+eus_vs_multi <- games_cleaned |>
   ggplot(aes(x = eu_sales_million, y = online_multiplayer)) +
-  geom_boxplot()
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Sales in Europe \nvs Mutlitplayer",
+    x = "Sales in Europe \n(Millions USD)",
+    y = "Multiplayer"
+  ) +
+  theme(
+    legend.title = element_text(),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  ) 
 
-games_cleaned |>
+others_vs_multi <- games_cleaned |>
   ggplot(aes(x = other_sales_million, y = online_multiplayer)) +
-  geom_boxplot()
-
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Other Sales \nvs Mutlitplayer",
+    caption = "Other sales for video games around the world not in North America, Europe, or Japan",
+    x = "Other Sales \n(Millions USD)",
+    y = "Multiplayer"
+  ) +
+  theme(
+    legend.title = element_text(),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  ) 
 
 # How do microtransactions in a video game impact sales and launch price?
 
 # launched price vs microtransactions
-games_cleaned |>
+lp_w_micro <- games_cleaned |>
   ggplot(aes(y = launch_price_usd, fill = microtransactions)) +
-  geom_bar()
+  geom_bar(alpha = 0.7) +
+  theme_minimal() +
+  scale_fill_discrete(palette = c("green", "darkgreen")) +
+  labs(
+    title = "Distribution of Launch Price with Microtransactions",
+    x = "Count",
+    y = "Launch Price \n(USD)",
+    fill = "Microtransactions"
+  ) +
+  theme(
+    legend.title = element_text(family = "Noto Serif"),
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  ) 
 
 # majority of the games don't have microtransactions
 # some free games do have microtransactions which is ironic since the game 
@@ -284,8 +352,8 @@ games_cleaned |>
 
 # global sales vs micro
 games_cleaned |>
-  ggplot(aes(x = global_sales_million, color = microtransactions)) +
-  geom_density()
+  ggplot(aes(x = global_sales_million, y = microtransactions)) +
+  geom_boxplot()
 
 
 
