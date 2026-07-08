@@ -8,31 +8,50 @@ date: today
 
 ## Overview
 
+This is a summer project to showcase my skills. The goal is to explore a data set of interest, which in this case would be about video games since 1980's, as well as answer a few of my own research questions. I do some data tidying, a decent bit of exploratory data analysis, and finally, building predictive models. 
 
 # Data & Questions
 
 ## About the Data
 
+The dataset is called `games.csv`and it is from Kaggle.^[] 
+
 ## Questions
 
 ### Inferential 
 
-**What time of year is best for releasing an Indie video game?**
+Do certain genres sell more than others?
 
-**Do certain genres sell more during certain seasons? Or do some genres usually sell more than others?**
+Do multiplayer games increase sales?
 
-**Are multiplayer games increase sales?**
+How does microtransactions in a video game impact sales and launch price?
 
-**How does microtransactions in a video game impact sales and launch price?**
+
 
 ### Prediction
+
+What features or characteristics of a game are most likely to win Game of the Year?
+
+Which traits of a video game go into defining the launch price of the video game?
+
+
+# Procedure
+
+# Analysis
+
+**Do certain genres sell more than others?**
+
+**Do multiplayer games increase sales?**
+
+**How does microtransactions in a video game impact sales and launch price?**
 
 **What features or characteristics of a game are most likely to win Game of the Year?**
 
 **Which traits of a video game go into defining the launch price of the video game?**
 
 
+## References
 
-# Procedure
+GeeksforGeeks. “Bootstrap Method.” GeeksforGeeks, July 23, 2025.  
 
-# Analysis
+[GeeksforGeeks](https://www.geeksforgeeks.org/maths/bootstrap-method/) was really helpful for conceptually understanding the bootstrap method. It provided clear mini examples of the process.
