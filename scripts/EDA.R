@@ -7,10 +7,11 @@
 library(tidyverse)
 library(ggthemes)
 library(showtext)
+library(here)
 
 # free font from google thats similar to Akkurate Pro
 font_add_google("Noto Serif")
-font_add_google("Poppins")
+
 
 # showtext auto and add font
 showtext_auto()
@@ -48,7 +49,7 @@ games_cleaned <- read_csv("data/games.csv") |>
 
 # Genre vs Year
 
-y_vs_genre_fig <- games_cleaned |>
+y_vs_genre <- games_cleaned |>
   ggplot(aes(x = year, y = genre)) +
   geom_boxplot(color = "darkgreen") +
   theme_minimal() +
@@ -66,7 +67,7 @@ y_vs_genre_fig <- games_cleaned |>
 
 
 
-y_vs_genre_plattype_fig <- games_cleaned |>
+y_vs_genre_plattype <- games_cleaned |>
   ggplot(aes(x = year, y = genre, fill = platform_type)) +
   geom_boxplot(color = "darkgreen") +
   theme_minimal() +
@@ -77,7 +78,6 @@ y_vs_genre_plattype_fig <- games_cleaned |>
     fill = "Platform Type"
   ) +
   theme(
-    legend.title = element_text(),
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
@@ -100,7 +100,6 @@ plat_vs_year <- games_cleaned |>
     y = "Platform"
   ) +
   theme(
-    legend.title = element_text(),
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
@@ -113,7 +112,7 @@ plat_vs_year <- games_cleaned |>
 
 
    
-# Do certain genres usually sell more than others?
+# Do certain genres usually sell more than others? ----
 
 
 # global sales
@@ -128,7 +127,6 @@ gsales_vs_genre <- games_cleaned |>
     fill = "Platform Type"
   ) +
   theme(
-    legend.title = element_text(),
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
@@ -153,7 +151,6 @@ lp_vs_genre <- games_cleaned |>
     fill = "Platform Type"
   ) +
   theme(
-    legend.title = element_text(),
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
@@ -175,7 +172,6 @@ genre_w_lp <- games_cleaned |>
     fill = "Launch Price \n(USD)"
   ) +
   theme(
-    legend.title = element_text(),
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
@@ -217,7 +213,6 @@ lp_vs_global_sales <- games_cleaned |>
     y = "Launch Price \n(USD)"
   ) +
   theme(
-    legend.title = element_text(),
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
@@ -232,9 +227,9 @@ games_cleaned |>
 
 
 
-# Do multiplayer games increase sales?
+# Do multiplayer games increase sales? ----
    
-mutli_vs_games_cleaned <- games_cleaned |>
+gs_vs_multi <- games_cleaned |>
   ggplot(aes(x = global_sales_million, y = online_multiplayer)) +
   geom_boxplot(color = "darkgreen") +
   theme_minimal() +
@@ -244,7 +239,6 @@ mutli_vs_games_cleaned <- games_cleaned |>
     y = "Multiplayer"
   ) +
   theme(
-    legend.title = element_text(),
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
@@ -264,7 +258,6 @@ nas_vs_multi <- games_cleaned |>
     y = "Multiplayer"
   ) +
   theme(
-    legend.title = element_text(),
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
@@ -282,7 +275,6 @@ jps_vs_multi <- games_cleaned |>
     y = "Multiplayer"
   ) +
   theme(
-    legend.title = element_text(),
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
@@ -299,7 +291,6 @@ eus_vs_multi <- games_cleaned |>
     y = "Multiplayer"
   ) +
   theme(
-    legend.title = element_text(),
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
@@ -317,14 +308,13 @@ others_vs_multi <- games_cleaned |>
     y = "Multiplayer"
   ) +
   theme(
-    legend.title = element_text(),
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
     plot.title.position = "panel"
   ) 
 
-# How do microtransactions in a video game impact sales and launch price?
+# How do microtransactions in a video game impact sales and launch price?----
 
 # launched price vs microtransactions
 lp_w_micro <- games_cleaned |>
@@ -351,9 +341,39 @@ lp_w_micro <- games_cleaned |>
 # itself was free
 
 # global sales vs micro
-games_cleaned |>
+gs_vs_micro <- games_cleaned |>
   ggplot(aes(x = global_sales_million, y = microtransactions)) +
-  geom_boxplot()
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Global Sales \nvs Microtransactions",
+    x = "Global Sales \n(Millions USD)",
+    y = "Microtransactions"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  ) +
+  scale_x_continuous(limits = c(0, 500))
 
 
+
+# Saving out all the figures ----
+
+ggsave(here("figures/y_vs_genre.png"), plot = y_vs_genre)
+ggsave(here("figures/y_vs_genre_plattype.png"), plot = y_vs_genre_plattype)
+ggsave(here("figures/plat_vs_year.png"), plot = plat_vs_year)
+ggsave(here("figures/gsales_vs_genre.png"), plot = gsales_vs_genre)
+ggsave(here("figures/lp_vs_genre.png"), plot = lp_vs_genre)
+ggsave(here("figures/genre_w_lp.png"), plot = genre_w_lp)
+ggsave(here("figures/lp_vs_global_sales.png"), plot = lp_vs_global_sales)
+ggsave(here("figures/gs_vs_multi.png"), plot = gs_vs_multi)
+ggsave(here("figures/nas_vs_multi.png"), plot = nas_vs_multi)
+ggsave(here("figures/jps_vs_multi.png"), plot = jps_vs_multi)
+ggsave(here("figures/eus_vs_multi.png"), plot = eus_vs_multi)
+ggsave(here("figures/others_vs_multi.png"), plot = others_vs_multi)
+ggsave(here("figures/lp_w_micro.png"), plot = lp_w_micro)
+ggsave(here("figures/gs_vs_micro.png"), plot = gs_vs_micro)
 
