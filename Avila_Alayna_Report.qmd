@@ -40,6 +40,8 @@ This is a summer project to showcase my skills. The goal is to explore a data se
 
 library(tidyverse)
 library(here)
+
+games <- read_csv("data/games.csv")
 ```
 
 
@@ -53,9 +55,11 @@ The dataset is called `games.csv`and it is from Kaggle.^[] The data includes `50
 
 ```{r}
 #| label: miss-check
+#| echo: false
 
-
+naniar::miss_var_summary(games)
 ```
+
 
 
 ## Questions
