@@ -2,6 +2,8 @@
 
 # load libraries
 library(tidyverse)
+library(ggthemes)
+library(showtext)
 
 # load data
 games <- read_csv("data/games.csv")
@@ -11,6 +13,11 @@ pub_sum <- read_csv("data/publisher_summary.csv")
 vg_sales <- read_csv("data/video_games_sales.csv")
 y_trends <- read_csv("data/yearly_trends.csv")
 
+# free font from google thats similar to Akkurate Pro
+font_add_google("Noto Serif")
+
+# showtext auto and add font
+showtext_auto()
 
 # Games Data ----
 
@@ -18,11 +25,22 @@ y_trends <- read_csv("data/yearly_trends.csv")
 summary(games)
 
 # missingness check
-miss <- naniar::miss_var_summary(games)
-# no missingness
+missing_plot <- games |> 
+  naniar::gg_miss_var() +
+  labs(
+    title = "Distribution of Missingness Per Variable",
+    y = "Missingness",
+    x = "Variables"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
 
 
-ggsave(here::here("figures/miss.png"), plot = miss)
+ggsave(("figures/missing_plot.png"), plot = missing_plot)
 
 # some variables are loaded as numeric or character rather than factor
 ## Cleaning variables ----

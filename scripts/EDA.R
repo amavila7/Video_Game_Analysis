@@ -377,3 +377,5 @@ ggsave(here("figures/others_vs_multi.png"), plot = others_vs_multi)
 ggsave(here("figures/lp_w_micro.png"), plot = lp_w_micro)
 ggsave(here("figures/gs_vs_micro.png"), plot = gs_vs_micro)
 
+
+write_csv(games_cleaned, file = here("data/games_cleaned.csv"))

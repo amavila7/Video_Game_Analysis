@@ -42,6 +42,9 @@ library(tidyverse)
 library(here)
 
 games <- read_csv("data/games.csv")
+
+games_cleaned <- read_csv("data/games_cleaned.csv")
+
 ```
 
 
@@ -53,13 +56,26 @@ The dataset is called `games.csv`and it is from Kaggle.^[] The data includes `50
 
 ## Quality Check
 
+Below in #figure-summary, is the data summary of the `games` data. There are `50,000` video games, `35` variables, `11` of which are character and the remaining `24` are numeric. However, I noticed most of the numeric and character variables would be more insightful as factor variables. Before cleansing the variable type, I did a check for missing information. According to @fig-miss, there is no information missing from the data, and I can continue on with cleansing the variable types. As shown in #figure-summary-2 
+
 ```{r}
-#| label: miss-check
+#| label: summary
+#| fig-cap: "summary"
 #| echo: false
 
-naniar::miss_var_summary(games)
+skimr::skim(games)
 ```
 
+
+![Missingness Plot](figures/missing_plot.png){#fig-miss}
+
+```{r}
+#| label: summary-2
+#| fig-cap: "summary-2"
+#| echo: false
+
+skimr::skim(games_cleaned)
+```
 
 
 ## Questions
