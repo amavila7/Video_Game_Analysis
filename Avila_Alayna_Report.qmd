@@ -34,11 +34,29 @@ citation-location: margin
 
 This is a summer project to showcase my skills. The goal is to explore a data set of interest, which in this case would be about video games since 1980's, as well as answer a few of my own research questions. I do some data tidying, a decent bit of exploratory data analysis, and finally, building predictive models. 
 
+```{r}
+#| label: libs
+#| echo: false
+
+library(tidyverse)
+library(here)
+```
+
+
 # Data & Research Questions
 
 ## About the Data
 
 The dataset is called `games.csv`and it is from Kaggle.^[] The data includes `50,000` video game records of the past 47 years of gaming history across 33 different platforms, 51 publishers, and 20 genres. It also includes regional sales, ratings, and some engineering columns. This is according to the Kaggle overview for this dataset. This dataset gets updated annually by Meruva Kodanda Suraj. He is a datasets expert with several badges, datasets, and competitions connected to his Kaggle account. 
+
+## Quality Check
+
+```{r}
+#| label: miss-check
+
+
+```
+
 
 ## Questions
 
@@ -46,10 +64,24 @@ The dataset is called `games.csv`and it is from Kaggle.^[] The data includes `50
 
 Do certain genres sell more than others?
 
+```{r}
+
+```
+
+
+
 Do multiplayer games increase sales?
+
+```{r}
+
+```
+
 
 How does microtransactions in a video game impact sales and launch price?
 
+```{r}
+
+```
 
 
 ### Prediction
