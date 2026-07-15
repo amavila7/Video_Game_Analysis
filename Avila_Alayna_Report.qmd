@@ -60,7 +60,7 @@ Below in the first data summary of the `games` data. There are `50,000` video ga
 
 ```{r}
 #| label: summary
-#| fig-cap: "summary"
+#| fig-cap: "Summary"
 #| echo: false
 
 skimr::skim(games)
@@ -68,7 +68,7 @@ skimr::skim(games)
 
 ```{r}
 #| label: summary-2
-#| fig-cap: "summary-2"
+#| fig-cap: "Summary-2"
 #| echo: false
 
 skimr::skim(games_cleaned)
@@ -81,25 +81,9 @@ skimr::skim(games_cleaned)
 
 Do certain genres sell more than others?
 
-```{r}
-
-```
-
-
-
 Do multiplayer games increase sales?
 
-```{r}
-
-```
-
-
 How does microtransactions in a video game impact sales and launch price?
-
-```{r}
-
-```
-
 
 ### Prediction
 
@@ -107,12 +91,17 @@ What features or characteristics of a game are most likely to win Game of the Ye
 
 Which traits of a video game go into defining the launch price of the video game?
 
-
-# Procedure
-
 # Analysis
 
 **Do certain genres sell more than others?**
+
+![Genre Launch Price Range](figures/genre_w_lp.png){#fig-g-w-lp}
+
+![Global Sales vs Genre](figures/gsales_vs_genre.png){#fig-gs-g}
+
+![Launch Price vs Genre](figures/lp_vs_genre.png){#fig-lp-g}
+
+![Year vs Genre with Platform Type](figures/y_vs_genre_plattype.png){#fig-all}
 
 **Do multiplayer games increase sales?**
 
@@ -122,6 +111,8 @@ Which traits of a video game go into defining the launch price of the video game
 
 **Which traits of a video game go into defining the launch price of the video game?**
 
+
+# Procedure
 
 ## References
 
