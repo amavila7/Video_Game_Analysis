@@ -56,7 +56,7 @@ The dataset is called `games.csv`and it is from Kaggle.^[] The data includes `50
 
 ## Quality Check
 
-Below in #figure-summary, is the data summary of the `games` data. There are `50,000` video games, `35` variables, `11` of which are character and the remaining `24` are numeric. However, I noticed most of the numeric and character variables would be more insightful as factor variables. Before cleansing the variable type, I did a check for missing information. According to @fig-miss, there is no information missing from the data, and I can continue on with cleansing the variable types. As shown in #figure-summary-2 
+Below in the first data summary of the `games` data. There are `50,000` video games, `35` variables, `11` of which are character and the remaining `24` are numeric. However, I noticed most of the numeric and character variables would be more insightful as factor variables. It is also worth noting how there is no missing information for any of the variables. As shown in the second data summary, I made `platform`, `platform_type`, `platform_maker`, `genre`, `publisher_region`, `publisher_tier`, `esrb_rating`, `is_sequel`, `online_multiplayer`, `dlc_released`, `microtransactions`, `loot_boxes`, `game_pass_available`, `vr_support`, `goty_nominated`, and `goty_nominated` to factors.
 
 ```{r}
 #| label: summary
@@ -65,9 +65,6 @@ Below in #figure-summary, is the data summary of the `games` data. There are `50
 
 skimr::skim(games)
 ```
-
-
-![Missingness Plot](figures/missing_plot.png){#fig-miss}
 
 ```{r}
 #| label: summary-2
