@@ -133,6 +133,13 @@ Which traits of a video game go into defining the launch price of the video game
 
 ![Global Sales vs Microtransactions](figures/gs_vs_micro.png){#fig-gs-micro}
 
+![European Sales vs Microtransactions](figures/eus_vs_micro.png){#fig-eus-micro}
+
+![Japanese Sales vs Microtransactions](figures/jps_vs_micro.png){#fig-jps-micro}
+
+![North American Sales vs Microtransactions](figures/nas_vs_micro.png){#fig-nas-micro}
+
+
 ![Launch Price with Microtransactions](figures/lp_w_micro.png){#fig-lp-micro}
 
 

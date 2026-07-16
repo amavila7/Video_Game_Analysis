@@ -359,6 +359,58 @@ gs_vs_micro <- games_cleaned |>
   scale_x_continuous(limits = c(0, 500))
 
 
+# eu sales vs micro
+eus_vs_micro <- games_cleaned |>
+  ggplot(aes(x = eu_sales_million, y = microtransactions)) +
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Sales in Europe \nvs Microtransactions",
+    x = "Sales in Europe \n(Millions USD)",
+    y = "Microtransactions"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  ) 
+
+
+# jp sales vs micro
+jps_vs_micro <- games_cleaned |>
+  ggplot(aes(x = jp_sales_million, y = microtransactions)) +
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Sales in Japan \nvs Microtransactions",
+    x = "Sales in Japan \n(Millions USD)",
+    y = "Microtransactions"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  ) 
+
+# na sales vs micro
+nas_vs_micro <- games_cleaned |>
+  ggplot(aes(x = na_sales_million, y = microtransactions)) +
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Sales in North America \nvs Microtransactions",
+    x = "Sales in North America \n(Millions USD)",
+    y = "Microtransactions"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
+
 
 # Saving out all the figures ----
 
@@ -376,6 +428,9 @@ ggsave(here("figures/eus_vs_multi.png"), plot = eus_vs_multi)
 ggsave(here("figures/others_vs_multi.png"), plot = others_vs_multi)
 ggsave(here("figures/lp_w_micro.png"), plot = lp_w_micro)
 ggsave(here("figures/gs_vs_micro.png"), plot = gs_vs_micro)
+ggsave(here("figures/eus_vs_micro.png"), plot = eus_vs_micro)
+ggsave(here("figures/jps_vs_micro.png"), plot = jps_vs_micro)
+ggsave(here("figures/nas_vs_micro.png"), plot = nas_vs_micro)
 
 
 write_csv(games_cleaned, file = here("data/games_cleaned.csv"))
