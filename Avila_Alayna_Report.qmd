@@ -98,6 +98,8 @@ Which traits of a video game go into defining the launch price of the video game
 
 **Do certain genres sell more than others?**
 
+As we see in @fig-g-w-lp, every genre contains the whole range of launch prices. The differences how many games per range group of launch price for each genre are due to the difference in games released for each genre. With such a large imbalance of games per genre, it is difficult to decipher which genre of game is the most expense. Though it is worth noting how each genre has a game for every launch price option, ranging from free (`$0`) to `$79.99`.  As well as the majority of the games overall, tend to cost money.  
+
 ![Genre Launch Price Range](figures/genre_w_lp.png){#fig-g-w-lp}
 
 ![Global Sales vs Genre](figures/gsales_vs_genre.png){#fig-gs-g}
