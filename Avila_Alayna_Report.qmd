@@ -74,6 +74,7 @@ skimr::skim(games)
 skimr::skim(games_cleaned)
 ```
 
+::: {.callout-tip icon=false}
 
 ## Questions
 
@@ -90,6 +91,8 @@ How does microtransactions in a video game impact sales and launch price?
 What features or characteristics of a game are most likely to win Game of the Year?
 
 Which traits of a video game go into defining the launch price of the video game?
+
+::: 
 
 # Analysis
 
@@ -149,7 +152,9 @@ Which traits of a video game go into defining the launch price of the video game
 **Which traits of a video game go into defining the launch price of the video game?**
 
 
-# Procedure
+# Additional Insight
+
+# Reflection
 
 ## References
 
