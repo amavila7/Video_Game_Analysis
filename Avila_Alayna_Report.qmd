@@ -101,11 +101,41 @@ Which traits of a video game go into defining the launch price of the video game
 
 ![Launch Price vs Genre](figures/lp_vs_genre.png){#fig-lp-g}
 
+
+![Year vs Genre](figures/y_vs_genre.png){#fig-y-g}
+
 ![Year vs Genre with Platform Type](figures/y_vs_genre_plattype.png){#fig-all}
+
 
 **Do multiplayer games increase sales?**
 
+
+![Global Sales vs Multiplayer](figures/gs_vs_multi.png){#fig-gs-m}
+
+
+![European Sales vs Multiplayer](figures/eus_vs_multi.png){#fig-eus-m}
+
+
+
+![Japanese Sales vs Multiplayer](figures/jps_vs_multi.png){#fig-jps-m}
+
+
+
+![North American Sales vs Multiplayer](figures/nas_vs_multi.png){#fig-nas-m}
+
+
+
+![Other Sales vs Multiplayer](figures/others_vs_multi.png){#fig-os-m}
+
 **How does microtransactions in a video game impact sales and launch price?**
+
+
+
+![Global Sales vs Microtransactions](figures/gs_vs_micro.png){#fig-gs-micro}
+
+![Launch Price with Microtransactions](figures/lp_w_micro.png){#fig-lp-micro}
+
+
 
 **What features or characteristics of a game are most likely to win Game of the Year?**
 
