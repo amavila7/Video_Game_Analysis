@@ -74,9 +74,8 @@ skimr::skim(games)
 skimr::skim(games_cleaned)
 ```
 
-::: {.callout-tip icon=false}
 
-## Questions
+## Research Questions
 
 ### Inferential 
 
@@ -92,13 +91,15 @@ What features or characteristics of a game are most likely to win Game of the Ye
 
 Which traits of a video game go into defining the launch price of the video game?
 
-::: 
+
 
 # Analysis
 
 **Do certain genres sell more than others?**
 
-As we see in @fig-g-w-lp, every genre contains the whole range of launch prices. The differences how many games per range group of launch price for each genre are due to the difference in games released for each genre. With such a large imbalance of games per genre, it is difficult to decipher which genre of game is the most expense. Though it is worth noting how each genre has a game for every launch price option, ranging from free (`$0`) to `$79.99`.  As well as the majority of the games overall, tend to cost money.  
+As we see in @fig-g-w-lp, every genre contains the whole range of launch prices. The differences how many games per range group of launch price for each genre are due to the difference in games released per genre. With such a large imbalance of games per genre, it is difficult to decipher which genre of game is the most expense. Though it is worth noting how each genre has a game for every launch price option, ranging from free (`$0`) to `$79.99`.  As well as the majority of the games overall, tending to cost money. 
+
+Although launch price is helpful for gauging how much the game costs, prices do vary overtime. Therefore to find the genre with the most sales, I looked at global sales, and sales in specific continents. Starting with global sales, @fig-gs-g, shows how even genres with more games don't always have the most sales. 
 
 ![Genre Launch Price Range](figures/genre_w_lp.png){#fig-g-w-lp}
 
