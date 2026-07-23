@@ -139,6 +139,12 @@ gsales_vs_genre <- games_cleaned |>
 # lowest sales
 # visual novel, strategy, rhythm, & Idle/clicker
 
+
+games_cleaned |>
+  ggplot(aes(x = global_sales_million, fill = launch_price_usd)) +
+  geom_histogram() +
+  geom_rug()
+
 # launch price vs genre
 lp_vs_genre <- games_cleaned |>
   ggplot(aes(x = launch_price_usd, y = genre)) +
