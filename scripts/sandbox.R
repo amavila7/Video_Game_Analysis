@@ -440,6 +440,9 @@ games |>
 # and its AA
 
 
+games |>
+  count(genre) |>
+  arrange(-n)
 
 
 
