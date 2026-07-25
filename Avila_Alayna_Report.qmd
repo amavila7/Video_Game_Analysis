@@ -101,7 +101,7 @@ As we see in @fig-g-w-lp, every genre contains the whole range of launch prices 
 
 Although launch price is helpful for gauging how much the game costs, prices do vary overtime. Therefore, to find the genre that sells the most, I looked at global sales Starting with global sales, @fig-gs-g, shows how even genres with more games don't always have the most sales. For instance, there are more games under `Action` (7,496) than under `Sports` (5,571), however, games under `Sports` tend to make more sales. In fact, `Sandbox` games appear to have a greater median for global sales than any other genre. `Visual Novel` is the genre with the lowest median and least spread for global sales. 
 
-Another aspect I wanted to explore was when the games for the genres came out. In the case that if different genres weren't seen in games since the very beginning then I that would add to my understanding of the global sales differences. Therefore, @fig-y-g shows the distribution of genres in video games, over the years. The time frame ranges from `1885` to `2026`. As we can see, all the genres have existed throughout the whole time frame, but the majority of the games were released between the late `1990s` to late `2010s`. I will say I am a bit more shocked since the pandemic hit during the `2020s` and the gaming community blew up. However, with more of the restraints of working, it makes sense that not as many games were developed around this time  
+Another aspect I wanted to explore was when the games for the genres came out. In the case that if different genres weren't seen in games since the very beginning then I that would add to my understanding of the global sales differences. Therefore, @fig-y-g shows the distribution of genres in video games, over the years. The time frame ranges from `1885` to `2026`. As we can see, all the genres have existed throughout the whole time frame, but the majority of the games were released between the late `1990s` to late `2010s`. I will say I am a bit more shocked since the pandemic hit during the `2020s` and the gaming community blew up. However, with more of the restraints of working, it makes sense that not as many games were developed around this time. 
 
 
 
@@ -114,10 +114,11 @@ Another aspect I wanted to explore was when the games for the genres came out. I
 
 ![Year vs Genre](figures/y_vs_genre.png){#fig-y-g}
 
-![Year vs Genre with Platform Type](figures/y_vs_genre_plattype.png){#fig-all}
 
 
 **Do multiplayer games increase sales?**
+
+
 
 
 ![Global Sales vs Multiplayer](figures/gs_vs_multi.png){#fig-gs-m}
@@ -160,6 +161,8 @@ Another aspect I wanted to explore was when the games for the genres came out. I
 
 
 # Additional Insight
+
+![Year vs Genre with Platform Type](figures/y_vs_genre_plattype.png){#fig-all}
 
 # Reflection
 

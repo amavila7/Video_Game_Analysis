@@ -319,6 +319,12 @@ others_vs_multi <- games_cleaned |>
     plot.title.position = "panel"
   ) 
 
+
+games_cleaned |>
+  ggplot(aes(x = year, y = online_multiplayer)) +
+  geom_boxplot()
+
+
 # How do microtransactions in a video game impact sales and launch price?----
 
 # launched price vs microtransactions
