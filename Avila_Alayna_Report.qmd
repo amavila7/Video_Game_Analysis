@@ -166,6 +166,10 @@ Another aspect I wanted to explore was when the games for the genres came out. I
 
 # Reflection
 
+- I wish the month was recorded in the data set
+- I wish online was separated from multiplayer
+- It would be nice if how many players allowed per game (1,2,3,4, etc)
+
 ## References
 
 GeeksforGeeks. “Bootstrap Method.” GeeksforGeeks, July 23, 2025.  
