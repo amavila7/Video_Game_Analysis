@@ -123,8 +123,7 @@ gsales_vs_genre <- games_cleaned |>
   labs(
     title = "Distribution of Global Sales vs Genre",
     x = "Global Sales\n(millions)",
-    y = "Genre",
-    fill = "Platform Type"
+    y = "Genre"
   ) +
   theme(
     axis.title = element_text(family = "Noto Serif"),

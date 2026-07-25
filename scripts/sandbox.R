@@ -445,4 +445,5 @@ games |>
   arrange(-n)
 
 
-
+games |>
+  arrange(year)

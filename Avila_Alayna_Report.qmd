@@ -97,13 +97,15 @@ Which traits of a video game go into defining the launch price of the video game
 
 **Do certain genres sell more than others?**
 
-For this question I decided to dive more into the sales and launch price. My logic was launch price and sales are likely to have some sort of association or relationship. 
+As we see in @fig-g-w-lp, every genre contains the whole range of launch prices which is `$0` (free) to `$79.99`. The different amount of games per range group of launch price for each genre are due to the difference in amount of games released per genre. With such a large imbalance of games per genre, it is difficult to decipher which genre of game is the most expense. Though it is worth noting how the majority of the games overall, tend to cost money. Another visual of launch price in relation to genre is @fig-lp-g, where the spread of launch price for all the genres is easier to compare. The majority of the genres' launch prices tend to be centered around `$40`, or `$50`. The spreads for all the genres appear pretty similar aside from `Rhythm` which has its middle `50%` on the higher end despite the median being `$40`. However, the range of prices does show how despite having a difference for location of the middle `50%` for `Rhythm` games, its worth noting how the overall range still covers the full range of launch prices. This means that few `Rhythm` games fall on the cheaper end of the launch price range (`$0-$30`). 
 
-As we see in @fig-g-w-lp, every genre contains the whole range of launch prices. The differences how many games per range group of launch price for each genre are due to the difference in games released per genre. With such a large imbalance of games per genre, it is difficult to decipher which genre of game is the most expense. Though it is worth noting how each genre has a game for every launch price option, ranging from free (`$0`) to `$79.99`.  As well as the majority of the games overall, tending to cost money. 
+Although launch price is helpful for gauging how much the game costs, prices do vary overtime. Therefore, to find the genre that sells the most, I looked at global sales Starting with global sales, @fig-gs-g, shows how even genres with more games don't always have the most sales. For instance, there are more games under `Action` (7,496) than under `Sports` (5,571), however, games under `Sports` tend to make more sales. In fact, `Sandbox` games appear to have a greater median for global sales than any other genre. `Visual Novel` is the genre with the lowest median and least spread for global sales. 
 
-Although launch price is helpful for gauging how much the game costs, prices do vary overtime. Therefore to find the genre with the most sales, I looked at global sales, and sales in specific continents. Starting with global sales, @fig-gs-g, shows how even genres with more games don't always have the most sales. 
+Another aspect I wanted to explore was when the games for the genres came out. In the case that if different genres weren't seen in games since the very beginning then I that would add to my understanding of the global sales differences. Therefore, @fig-y-g shows the distribution of genres in video games, over the years. The time frame ranges from `1885` to `2026`. As we can see, all the genres have existed throughout the whole time frame, but the majority of the games were released between the late `1990s` to late `2010s`. I will say I am a bit more shocked since the pandemic hit during the `2020s` and the gaming community blew up. However, with more of the restraints of working, it makes sense that not as many games were developed around this time  
 
-![Genre Launch Price Range](figures/genre_w_lp.png){#fig-g-w-lp}
+
+
+![Genre with Launch Price Range](figures/genre_w_lp.png){#fig-g-w-lp}
 
 ![Global Sales vs Genre](figures/gsales_vs_genre.png){#fig-gs-g}
 
