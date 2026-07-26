@@ -116,7 +116,10 @@ Another aspect I wanted to explore was when the games for the genres came out. I
 
 
 
-**Do multiplayer games increase sales?**
+**Do online multiplayer games increase sales?**
+
+While gaming solo can be fun, gaming with friends or others online can be more entertaining and even increase sales. As seen in @fig-gs-m, online multiplayers tend to have more sales globally than no online multiplayer games. Although, this preference may not be the same for all part of the world. For insatnce, when taking a deeper dive into the sales in Europe with @fig-eus-m, we see how the middle `50%` of the European sales for online and not online multiplayer games are much closer to each other, and a no online multiplayer games made more sales than the online multiplayer games. This contradicts the conclusion made for the global sales. Whereas the sales in Japan and North America as seen in @fig-jps-m and @fig-nas-m show a similar story to global sales where online multiplayer games tend to sell more. As for sales elsewhere in the world, @fig-os-m shows how this pattern of online multiplayer games tend to sell more than non-online multiplayer games.
+
 
 
 
