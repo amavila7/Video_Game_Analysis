@@ -7,11 +7,6 @@ library(showtext)
 
 # load data
 games <- read_csv("data/games.csv")
-genre_sum <- read_csv("data/genre_summary.csv")
-plat_sum <- read_csv("data/platform_summary.csv")
-pub_sum <- read_csv("data/publisher_summary.csv")
-vg_sales <- read_csv("data/video_games_sales.csv")
-y_trends <- read_csv("data/yearly_trends.csv")
 
 # free font from google thats similar to Akkurate Pro
 font_add_google("Noto Serif")
@@ -217,178 +212,178 @@ games |>
 # caution 
 ###
 
-# Genre Summary ----
-
-## Initial Look ----
-summary(genre_sum)
-
-# none of the variables appear to be encoded incorrectly 
-# no obvious data cleansing so far
-# there are only 20 observations !
-
-## Variables ----
-
-# all variables of interest are numeric
-
-# not exactly sure on how to interpret this variable
-# given the context I will proceed under the impression that
-# this variable is the number of titles for all genres
-genre_sum |>
-  ggplot(aes(x = titles)) +
-  geom_histogram()
-
-# plot to help understand the relationship of titles and genres
-genre_sum |>
-  ggplot(aes(x = titles, y = genre)) +
-  geom_boxplot()
-
-# mild right skew due to dollar amount
-# money tends to have a right skew especially when > $1000
-genre_sum |>
-  ggplot(aes(x = total_sales_m)) +
-  geom_density()
-
-# also mild right skew since it is the avg of a heavy right skew
-genre_sum |>
-  ggplot(aes(x = avg_sales_m)) +
-  geom_density()
-
-# mild left skew with a peak at 74
-genre_sum |>
-  ggplot(aes(x = avg_metacritic)) +
-  geom_density()
-
-# mild left skew with a peak at 7.5
-genre_sum |>
-  ggplot(aes(x = avg_user_score)) +
-  geom_density()
-
-
-# just under 50% got goty nominated
-genre_sum |>
-  ggplot(aes(x = pct_goty_nominated)) +
-  geom_density()
-
-# heavy right skew - htlb?
-genre_sum |>
-  ggplot(aes(x = avg_htlb_main)) +
-  geom_density()
-
-# peak at 0% and 1%
-genre_sum |>
-  ggplot(aes(x = pct_online)) +
-  geom_density() +
-  geom_rug()
-
-# peak at 0.62
-genre_sum |>
-  ggplot(aes(x = pct_dlc)) +
-  geom_density()
-
-# peak at 0.25 and 0.5 
-genre_sum |>
-  ggplot(aes(x = pct_microtransactions)) +
-  geom_histogram()
-
-###
-# Note: there are a lot of money related variables that will need a power transformation
-# due to the small number of observations, I may not use this dataset
-###
-
-# Platform Summary ----
-
-## Initial Look ----
-
-# there are only 33 observations so we will proceed with caution
-
-summary(plat_sum)
-
-## Variables ----
-
-# top genre variable repeats "Action" for all observations
-plat_sum |>
-  distinct(top_genre)
-
-# This dataset shares variables with the genre summary data, publisher data, &
-# yearly trend data however, all the datasets have varying amounts of observations
-# I might disregard these datasets due to the low number of observations and repetition of
-# variables or I might try to combine the data
-
-# Lets check the video game sales set first
-
-
-# Video Game Sales Summary ----
-
-## Initial Look ----
-
-summary(vg_sales)
-
-# year is a character variable that will make numeric or a factor
-# genre is character which could be fine, but might be more helpful as a factor
-# possibly the same with platform
-
-## Data Cleansing ----
-
-vg_sales <- vg_sales |>
-  mutate(
-    Year = as.numeric(Year),
-    Genre = as.factor(Genre),
-    Platform = as.factor(Platform)
-  )
-
-## Variables ----
-
-
-# range of years is 1980 to 2020
-vg_sales |>
-  ggplot(aes(x = Year)) +
-  geom_density()
-
-# 12 genres in this data set
-vg_sales |>
-  ggplot(aes(x = Genre)) +
-  geom_bar()
-
-# 31 different platforms in this data set
-vg_sales |>
-  ggplot(aes(x = Platform)) +
-  geom_bar()
-
-# finiding most popular platforms
-# DS, PS2, PS3 are the top 3 
-vg_sales |>
-  count(Platform) |>
-  arrange(desc(n))
-
-# extreme right skew
-vg_sales |>
-  ggplot(aes(x = NA_Sales)) +
-  geom_density()
-
-# similar to NA Sales
-vg_sales |>
-  ggplot(aes(x = EU_Sales)) +
-  geom_density()
-
-# similar to NA Sales
-vg_sales |>
-  ggplot(aes(x = JP_Sales)) +
-  geom_density()
-
-# similar to NA Sales
-vg_sales |>
-  ggplot(aes(x = Other_Sales)) +
-  geom_density()
-
-# similar to NA Sales
-vg_sales |>
-  ggplot(aes(x = Global_Sales)) +
-  geom_density()
+# # Genre Summary ----
+# 
+# ## Initial Look ----
+# summary(genre_sum)
+# 
+# # none of the variables appear to be encoded incorrectly 
+# # no obvious data cleansing so far
+# # there are only 20 observations !
+# 
+# ## Variables ----
+# 
+# # all variables of interest are numeric
+# 
+# # not exactly sure on how to interpret this variable
+# # given the context I will proceed under the impression that
+# # this variable is the number of titles for all genres
+# genre_sum |>
+#   ggplot(aes(x = titles)) +
+#   geom_histogram()
+# 
+# # plot to help understand the relationship of titles and genres
+# genre_sum |>
+#   ggplot(aes(x = titles, y = genre)) +
+#   geom_boxplot()
+# 
+# # mild right skew due to dollar amount
+# # money tends to have a right skew especially when > $1000
+# genre_sum |>
+#   ggplot(aes(x = total_sales_m)) +
+#   geom_density()
+# 
+# # also mild right skew since it is the avg of a heavy right skew
+# genre_sum |>
+#   ggplot(aes(x = avg_sales_m)) +
+#   geom_density()
+# 
+# # mild left skew with a peak at 74
+# genre_sum |>
+#   ggplot(aes(x = avg_metacritic)) +
+#   geom_density()
+# 
+# # mild left skew with a peak at 7.5
+# genre_sum |>
+#   ggplot(aes(x = avg_user_score)) +
+#   geom_density()
+# 
+# 
+# # just under 50% got goty nominated
+# genre_sum |>
+#   ggplot(aes(x = pct_goty_nominated)) +
+#   geom_density()
+# 
+# # heavy right skew - htlb?
+# genre_sum |>
+#   ggplot(aes(x = avg_htlb_main)) +
+#   geom_density()
+# 
+# # peak at 0% and 1%
+# genre_sum |>
+#   ggplot(aes(x = pct_online)) +
+#   geom_density() +
+#   geom_rug()
+# 
+# # peak at 0.62
+# genre_sum |>
+#   ggplot(aes(x = pct_dlc)) +
+#   geom_density()
+# 
+# # peak at 0.25 and 0.5 
+# genre_sum |>
+#   ggplot(aes(x = pct_microtransactions)) +
+#   geom_histogram()
+# 
+# ###
+# # Note: there are a lot of money related variables that will need a power transformation
+# # due to the small number of observations, I may not use this dataset
+# ###
+# 
+# # Platform Summary ----
+# 
+# ## Initial Look ----
+# 
+# # there are only 33 observations so we will proceed with caution
+# 
+# summary(plat_sum)
+# 
+# ## Variables ----
+# 
+# # top genre variable repeats "Action" for all observations
+# plat_sum |>
+#   distinct(top_genre)
+# 
+# # This dataset shares variables with the genre summary data, publisher data, &
+# # yearly trend data however, all the datasets have varying amounts of observations
+# # I might disregard these datasets due to the low number of observations and repetition of
+# # variables or I might try to combine the data
+# 
+# # Lets check the video game sales set first
+# 
+# 
+# # Video Game Sales Summary ----
+# 
+# ## Initial Look ----
+# 
+# summary(vg_sales)
+# 
+# # year is a character variable that will make numeric or a factor
+# # genre is character which could be fine, but might be more helpful as a factor
+# # possibly the same with platform
+# 
+# ## Data Cleansing ----
+# 
+# vg_sales <- vg_sales |>
+#   mutate(
+#     Year = as.numeric(Year),
+#     Genre = as.factor(Genre),
+#     Platform = as.factor(Platform)
+#   )
+# 
+# ## Variables ----
+# 
+# 
+# # range of years is 1980 to 2020
+# vg_sales |>
+#   ggplot(aes(x = Year)) +
+#   geom_density()
+# 
+# # 12 genres in this data set
+# vg_sales |>
+#   ggplot(aes(x = Genre)) +
+#   geom_bar()
+# 
+# # 31 different platforms in this data set
+# vg_sales |>
+#   ggplot(aes(x = Platform)) +
+#   geom_bar()
+# 
+# # finiding most popular platforms
+# # DS, PS2, PS3 are the top 3 
+# vg_sales |>
+#   count(Platform) |>
+#   arrange(desc(n))
+# 
+# # extreme right skew
+# vg_sales |>
+#   ggplot(aes(x = NA_Sales)) +
+#   geom_density()
+# 
+# # similar to NA Sales
+# vg_sales |>
+#   ggplot(aes(x = EU_Sales)) +
+#   geom_density()
+# 
+# # similar to NA Sales
+# vg_sales |>
+#   ggplot(aes(x = JP_Sales)) +
+#   geom_density()
+# 
+# # similar to NA Sales
+# vg_sales |>
+#   ggplot(aes(x = Other_Sales)) +
+#   geom_density()
+# 
+# # similar to NA Sales
+# vg_sales |>
+#   ggplot(aes(x = Global_Sales)) +
+#   geom_density()
 
 # Considering the Games Data contained essentially all the same information with 
 # more observations, I believe I can disregard these extra data sets for now
 
-# Extra finds
+# Extra finds ---- 
 games |>
   select(title, genre, launch_price_usd, global_sales_million) |>
   arrange(-global_sales_million)
