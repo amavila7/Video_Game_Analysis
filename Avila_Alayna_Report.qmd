@@ -140,17 +140,14 @@ Clearly whether or not the game is an online multiplayer, the games tend to sell
 
 ![Other Sales vs Multiplayer](figures/others_vs_multi.png){#fig-os-m}
 
-**How does microtransactions in a video game impact sales and launch price?**
+**How do microtransactions in a video game impact sales and launch price?**
 
+Microtransactions may seem like an opportunity for players who enjoy pay-to-win games or even games that have a store for extra features. However, microtransactions are usually optional in games, it just might hinder the experience depending on what the player gets in return. Although microtransactions from the company's side is another way to boost sales, especially for free games. Therefore, when looking at global sales for games and whether or not the game has microtransactions, @fig-gs-micro, shows how the sales for games with microtransactions is greater than those without. Although it is worth noting that the overall spread of sales among the games with and without the microtransactions do have similar spreads. 
+
+As for launch prices, most of the microtransactions tend to go with the games that have a launch price of `$20+`, and the games that are free. This isn't too shocking since microtransactions can contribute to the sales of the video game on the business side, especially for the games that are launched as free. Although it is worth noting that the majority of the games don't have microtransactions. 
 
 
 ![Global Sales vs Microtransactions](figures/gs_vs_micro.png){#fig-gs-micro}
-
-![European Sales vs Microtransactions](figures/eus_vs_micro.png){#fig-eus-micro}
-
-![Japanese Sales vs Microtransactions](figures/jps_vs_micro.png){#fig-jps-micro}
-
-![North American Sales vs Microtransactions](figures/nas_vs_micro.png){#fig-nas-micro}
 
 
 ![Launch Price with Microtransactions](figures/lp_w_micro.png){#fig-lp-micro}
@@ -165,6 +162,13 @@ Clearly whether or not the game is an online multiplayer, the games tend to sell
 # Additional Insight
 
 ![Year vs Genre with Platform Type](figures/y_vs_genre_plattype.png){#fig-all}
+
+![European Sales vs Microtransactions](figures/eus_vs_micro.png){#fig-eus-micro}
+
+![Japanese Sales vs Microtransactions](figures/jps_vs_micro.png){#fig-jps-micro}
+
+![North American Sales vs Microtransactions](figures/nas_vs_micro.png){#fig-nas-micro}
+
 
 # Reflection
 
