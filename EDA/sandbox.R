@@ -48,6 +48,7 @@ games <- games |>
     genre = as.factor(genre),
     publisher_region = as.factor(publisher_region),
     publisher_tier = as.factor(publisher_tier),
+    launch_price_usd = as.factor(launch_price_usd),
     esrb_rating = as.factor(esrb_rating),
     is_sequel = as.factor(is_sequel),
     is_sequel = fct_recode(is_sequel, "Yes" = "1", "No" = "0"),

@@ -5,120 +5,115 @@ library(tidyverse)
 
 
 # load data
-games <- read_csv("data/games.csv")
+games <- read_csv("data/games_cleaned.csv")
 
 # Games Data ----
 
-# some variables are loaded as numeric or character rather than factor
-## Cleaning variables ----
-games <- games |>
-  mutate(
-    platform = as.factor(platform),
-    platform_type = as.factor(platform_type),
-    platform_maker = as.factor(platform_maker),
-    platform_generation = as.factor(platform_generation),
-    genre = as.factor(genre),
-    publisher_region = as.factor(publisher_region),
-    publisher_tier = as.factor(publisher_tier),
-    esrb_rating = as.factor(esrb_rating),
-    is_sequel = as.factor(is_sequel),
-    is_sequel = fct_recode(is_sequel, "Yes" = "1", "No" = "0"),
-    online_multiplayer = factor(online_multiplayer),
-    online_multiplayer = fct_recode(online_multiplayer, "Yes" = "1", "No" = "0"),
-    dlc_released = as.factor(dlc_released),
-    dlc_released = fct_recode(dlc_released, "Yes" = "1", "No" = "0"),
-    microtransactions = as.factor(microtransactions),
-    microtransactions = fct_recode(microtransactions, "Yes" = "1", "No" = "0"),
-    loot_boxes = as.factor(loot_boxes),
-    loot_boxes = fct_recode(loot_boxes, "Yes" = "1", "No" = "0"),
-    game_pass_available = as.factor(game_pass_available),
-    game_pass_available = fct_recode(game_pass_available, "Yes" = "1", "No" = "0"),
-    vr_support = as.factor(vr_support),
-    vr_support = fct_recode(vr_support, "Yes" = "1", "No" = "0"),
-    goty_nominated = as.factor(goty_nominated),
-    goty_nominated = fct_recode(goty_nominated, "Yes" = "1", "No" = "0"),
-    goty_won = as.factor(goty_won),
-    goty_won = fct_recode(goty_won, "Yes" = "1", "No" = "0"),
-  )
-
-
-
-
-# large spread
+# large spread - Action is the most popular
 games |>
-  ggplot(aes(x = genre)) +
+  ggplot(aes(y = genre)) +
   geom_bar()
 
-# T & M are most common
+# T & M are most common followed by E
 games |>
   ggplot(aes(x = esrb_rating)) +
   geom_bar()
 
-# even-ish split
+# even-ish split - no cleansing needed
 games |>
   ggplot(aes(x = online_multiplayer)) +
   geom_bar()
 
 
-# about 2/3 aren't a sequel
+# about 60% aren't a sequel - slight imbalance but not too bad
 games |>
   ggplot(aes(x = is_sequel)) +
   geom_bar()
 
-# majority do have a dlc
+# about 60% do have a dlc - a bit more of an imbalance considering the yes column 
+# goes past 30k
 games |>
   ggplot(aes(x = dlc_released)) +
   geom_bar()
 
-# majority don't have microtransactions
+# about 70% don't have microtransactions - major imbalance here
 games |>
   ggplot(aes(x = microtransactions)) +
   geom_bar()
 
-# very few have loot boxes
+# very few have loot boxes- about 90% don't have loot boxes
+# major imbalance however very few games allow for loot boxes to be a thing
+# in context of the 50k games
 games |>
   ggplot(aes(x = loot_boxes)) +
   geom_bar()
 
-# very few are game pass available
+# very few are game pass available - similar imbalance to loot boxes
+# this can be due to game pass availability varying for different platforms & 
+# companies
 games |>
   ggplot(aes(x = game_pass_available)) +
   geom_bar()
 
-# very few support vr
+# very few support vr - extreme imbalance 
+# likely due to the accessibility of vr acessories 
 games |>
   ggplot(aes(x = vr_support)) +
   geom_bar()
 
 # very few were nominated for game of the year
+# this makes sense considering how many games there are and how 
+# recent this category is for winning an award for
 games |>
   ggplot(aes(x = goty_nominated)) +
   geom_bar()
 
 # even less won the award 
+# this tracks since even fewer games actually win game of the year
 games |>
   ggplot(aes(x = goty_won)) +
   geom_bar()
 
+# pretty large range of prices $0-$80
+# middle 50% ranges from $20 to $60
+# centered at $40
+games |>
+  ggplot(aes(y = launch_price_usd)) +
+  geom_bar() 
+
+games |>
+  ggplot(aes(x = launch_price_usd)) +
+  geom_boxplot() +
+  geom_rug()
+
 ## Numeric Variables ----
 
-# year of release - many between early 2000s and late 2010s
+# year of release - centered between early 2000s and late 2010s
 games |>
   ggplot(aes(x = year)) +
-  geom_boxplot()
+  geom_boxplot() +
+  geom_rug()
 
-# slight skew to the left
+# there are some peaks throughout the years, but mostly pretty even
+games |>
+  ggplot(aes(x = year)) +
+  geom_histogram(alpha = 0.6) +
+  geom_rug()
+
+# slight skew to the left- scores tend to center around 75
 games |>
   ggplot(aes(x = metacritic_score)) +
   geom_density()
 
-# user score has a slight left skew
+# user score has a slight left skew - scores tend to center around 7.5
+# pretty similar to metacritic score which is to be expected
 games |>
   ggplot(aes(x = user_score)) +
-  geom_histogram(bins = 50) +
+  geom_density() +
   geom_rug()
 
-# national sales has a heavy right skew
+# national sales has a heavy right skew - a power transformation would be helpful
+# for standardizing it since the variable is in the millions
 games |>
   ggplot(aes(x = na_sales_million)) +
   geom_density()
@@ -149,13 +144,8 @@ games |>
   geom_density()
 
 
-# pretty large range of prices $0-$80
-games |>
-  ggplot(aes(x = launch_price_usd)) +
-  geom_density() +
-  geom_rug()
-
-# heavy right skew
+# heavy right skew - a power transformation similar to the one used for 
+# sales would be helpful for standardizing this variable
 games |>
   ggplot(aes(x = how_long_to_beat_main_hrs)) +
   geom_density()
