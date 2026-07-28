@@ -1,41 +1,13 @@
-# Sandbox 
+# Univariate Analysis 
 
 # load libraries
 library(tidyverse)
-library(ggthemes)
-library(showtext)
+
 
 # load data
 games <- read_csv("data/games.csv")
 
-# free font from google thats similar to Akkurate Pro
-font_add_google("Noto Serif")
-
-# showtext auto and add font
-showtext_auto()
-
 # Games Data ----
-
-## Initial Look ----
-summary(games)
-
-# missingness check
-missing_plot <- games |> 
-  naniar::gg_miss_var() +
-  labs(
-    title = "Distribution of Missingness Per Variable",
-    y = "Missingness",
-    x = "Variables"
-  ) +
-  theme(
-    axis.title = element_text(family = "Noto Serif"),
-    axis.text = element_text(family = "Noto Serif"),
-    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
-    plot.title.position = "panel"
-  )
-
-
-ggsave(("figures/missing_plot.png"), plot = missing_plot)
 
 # some variables are loaded as numeric or character rather than factor
 ## Cleaning variables ----
@@ -70,13 +42,7 @@ games <- games |>
   )
 
 
-## Factor Variables ----
 
-# PC has the most games followed by mobile
-games |>
-  count(platform) |>
-  arrange(-n) |>
-  print(n = 33)
 
 # large spread
 games |>
@@ -133,7 +99,6 @@ games |>
 games |>
   ggplot(aes(x = goty_won)) +
   geom_bar()
-
 
 ## Numeric Variables ----
 
@@ -382,63 +347,3 @@ games |>
 
 # Considering the Games Data contained essentially all the same information with 
 # more observations, I believe I can disregard these extra data sets for now
-
-# Extra finds ---- 
-games |>
-  select(title, genre, launch_price_usd, global_sales_million) |>
-  arrange(-global_sales_million)
-
-# NHL 2025 launch price was $2.99, but global sales was $1495mil
-
-games |>
-  select(title, genre, launch_price_usd, global_sales_million) |>
-  arrange(global_sales_million)
-
-# Batman: Arkham Horizon, visual novel, $40 for launch price, and only $0.05 mil
-
-games |>
-  select(title, genre, launch_price_usd, global_sales_million) |>
-  arrange(-launch_price_usd)
-
-games |>
-  select(title, genre, launch_price_usd, global_sales_million) |>
-  arrange(launch_price_usd)
-
-
-# !!!
-games |>
-  select(title, platform, launch_price_usd, global_sales_million, publisher_tier, esrb_rating, year) |>
-  filter(publisher_tier == "Indie") |>
-  arrange(global_sales_million)
-
-
-games |>
-  select(
-    launch_price_usd, genre, how_long_to_beat_main_hrs, 
-    how_long_to_beat_completionist_hrs, publisher_tier, platform, 
-    global_sales_million, title
-    ) |>
-  arrange(how_long_to_beat_main_hrs)
-
-# XCOM 6 is an Indie game with the least amount of hours to beat - 6.02 mil, 80 lp, 1 hr, 3.6 to complete
-
-
-games |>
-  select(
-    title, genre, how_long_to_beat_main_hrs, 
-    how_long_to_beat_completionist_hrs, publisher_tier, platform, 
-    global_sales_million, launch_price_usd
-  ) |>
-  arrange(-how_long_to_beat_main_hrs)
-
-# Final Fantasy XIV:Shadow War is the longest game to beat main hours at 378hrs, $50 lp, $4.02 mil, AA and on PC, 1107 hrs to complete
-# and its AA
-
-
-games |>
-  count(genre) |>
-  arrange(-n)
-
-
-games |>
-  arrange(year)

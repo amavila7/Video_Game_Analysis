@@ -1,7 +1,5 @@
-# Exploratory Data Analysis
+# Bivariate
 
-# The sandbox script includes uni-variate analysis for all the data
-# This script is for bivariate and multivariate relations
 
 # load libraries
 library(tidyverse)
@@ -27,6 +25,7 @@ games_cleaned <- read_csv("data/games.csv") |>
     publisher_region = as.factor(publisher_region),
     publisher_tier = as.factor(publisher_tier),
     esrb_rating = as.factor(esrb_rating),
+    launch_price_usd = as.factor(launch_price_usd),
     is_sequel = as.factor(is_sequel),
     is_sequel = fct_recode(is_sequel, "Yes" = "1", "No" = "0"),
     online_multiplayer = factor(online_multiplayer),
@@ -65,28 +64,6 @@ y_vs_genre <- games_cleaned |>
     plot.title.position = "panel"
   )
 
-
-
-y_vs_genre_plattype <- games_cleaned |>
-  ggplot(aes(x = year, y = genre, fill = platform_type)) +
-  geom_boxplot(color = "darkgreen") +
-  theme_minimal() +
-  labs(
-    title = "Distribution of Year Released vs Genre",
-    x = "Year",
-    y = "Genre",
-    fill = "Platform Type"
-  ) +
-  theme(
-    axis.title = element_text(family = "Noto Serif"),
-    axis.text = element_text(family = "Noto Serif"),
-    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
-    plot.title.position = "panel"
-  )
-
-# it appears video games were mainly popular from early 2000s to late 2010s
-# I'm surprised the spread doesn't extend to 2020 and beyond due to the pandemic
-# more people turned to gaming while quarantining at home
 
 
 # Platform vs Year
@@ -162,8 +139,8 @@ lp_vs_genre <- games_cleaned |>
     plot.title.position = "panel"
   )
 
-games_cleaned <- games_cleaned |>
-  mutate(launch_price_usd = as.factor(launch_price_usd))
+# games_cleaned <- games_cleaned |>
+#   mutate(launch_price_usd = as.factor(launch_price_usd))
 
 # launch price vs genre
 genre_w_lp <- games_cleaned |>
@@ -203,9 +180,6 @@ games_cleaned |>
 # the best sales are the free games or games under $10
 # there is an increase of global sales for games sold at $50+
 
-# 14 distinct prices - changing this to be a factor
-games_cleaned |>
-  distinct(launch_price_usd) 
 
 # boxplot - interesting how it changes to more exact pricing
 lp_vs_global_sales <- games_cleaned |>
@@ -426,7 +400,6 @@ nas_vs_micro <- games_cleaned |>
 # Saving out all the figures ----
 
 ggsave(here("figures/y_vs_genre.png"), plot = y_vs_genre)
-ggsave(here("figures/y_vs_genre_plattype.png"), plot = y_vs_genre_plattype)
 ggsave(here("figures/plat_vs_year.png"), plot = plat_vs_year)
 ggsave(here("figures/gsales_vs_genre.png"), plot = gsales_vs_genre)
 ggsave(here("figures/lp_vs_genre.png"), plot = lp_vs_genre)
