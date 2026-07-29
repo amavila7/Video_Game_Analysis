@@ -169,18 +169,25 @@ As for launch prices, most of the microtransactions tend to go with the games th
 
 # Additional Insight
 
+
+Below are other figures I had created to satisfy my own curiosity. Beginning with @fig-all, we can see how not all the different platforms were around despite gaming being so popular. We can see how the genres for video games tend to favor `console` and `PC`, and how the other platforms didn't come to be until the early `2000's` and `2010's`. During this time, the main platforms were `PC`, `console`, `browser` and `handheld`. We can also see how some platforms have gone away, likely due to being outdated, and how newer platforms take their place. As `handheld` and `browser` began to lose popularity, `mobile`, `hybrid`, and `streaming` platforms came to be. This occurs around the late `2010's` and early `2020's` for all the genres. (@fig-y-ptt, shows a more clear timeline of the platforms)Popularity of platforms over the years, especially for genres is good to know for when companies want to produce a video game, and not all the platforms are options. For instance, if I had a `browser` game in the early `2020's`, I wouldn't have as big of an audience, if any, as I would if I were to make the `browser` game a `streaming` game.
+
+
 ![Year vs Genre with Platform Type](figures/y_vs_genre_plattype.png){#fig-all}
+
+![Year Released vs Platform Type](figures/y_vs_pt.png){#fig-y-ptt}
+
+Shifting gears a bit, aside from popularity of platforms and genres, the length of the video game can also say a lot about the game and the goal it serves. Longer games tend to have more in depth stories, where shorter ones are more for immediate dopamine rushes from completing an action. Although if a game is longer, the difference between main story completed vs completion of the game and all of the achievements grows larger. As we see in @fig-main-comp-lp, usually the longer games take longer to complete the whole game than just the main story. As for the impact of launch price, the launch price doesn't seem to define the length of the game, rather any length can be charged for any launch price. As for the platform type, @fig-main-comp-plt, shows how the longer games tend to be on `console` or `PC`, yet the longest game is on `hybrid`. As seen in both of these figures, the main story can be completed within `1/3` of the time that it takes to complete the full game, based on the scaling for the axes alone. 
 
 
 ![Main Hours vs Completion Hours with Launch Price](figures/main_vs_comp_lp.png){#fig-main-comp-lp}
 
 ![Main Hours vs Completion Hours with Platform Type](figures/main_vs_comp_plattype.png){#fig-main-comp-plt}
+
+Another shocking find was how different the estimated revenue was to the global sales. @fig-esti-gs-lp shows that games with higher launch prices were estimated to have greater revenue than the actual global sales show. In fact, the games that were launched at `$0` (free) or less than `$20`, had greater global sales than estimated revenue. While sales and revenue aren't the same, the global sales do play a role in how much revenue the developers or company receives. 
+
 ![Estimated Revenue vs Global Sales with Launch Price](figures/esti_vs_gs_lp.png){#fig-esti-gs-lp}
-![](figures/y_vs_pt.png){#fig-}
-![](figures/y_vs_pubtier.png){#fig-}
-![](figures/esrb_vs_g.png){#fig-}
-![](figures/lp_vs_esrb.png){#fig-}
-![](figures/.png){#fig-}
+
 
 
 # Reflection
