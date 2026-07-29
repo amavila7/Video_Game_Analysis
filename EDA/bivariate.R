@@ -293,7 +293,7 @@ others_vs_multi <- games_cleaned |>
     plot.title.position = "panel"
   ) 
 
-
+# even distribution of online multiplayer games throughout the time period
 games_cleaned |>
   ggplot(aes(x = year, y = online_multiplayer)) +
   geom_boxplot()
@@ -400,9 +400,9 @@ nas_vs_micro <- games_cleaned |>
 
 ## Other finds
 
-games_cleaned |>
+y_vs_pt <- games_cleaned |>
   ggplot(aes(x = year, y = platform_type)) +
-  geom_boxplot(color = "darkgreen") +
+  geom_boxplot(aes(color = platform_type, fill = platform_type), alpha = 0.6) +
   theme_minimal() +
   labs(
     title = "Distribution of Year Released vs Platform Type",
@@ -413,17 +413,66 @@ games_cleaned |>
     axis.title = element_text(family = "Noto Serif"),
     axis.text = element_text(family = "Noto Serif"),
     plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel",
+    legend.position = "none"
+  )
+
+
+y_vs_pubtier <- games_cleaned |>
+  ggplot(aes(x = year, y = publisher_tier)) +
+  geom_boxplot(aes(color = publisher_tier, fill = publisher_tier), alpha = 0.6) +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Year Released vs Publisher Tier",
+    x = "Year",
+    y = "Publisher Tier"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel",
+    legend.position = "none"
+  )
+
+
+# not all genres have games with the various ratings
+# majority for all genres is T followed by E & M
+
+esrb_vs_g <- games_cleaned |>
+  ggplot(aes(y = genre, fill = esrb_rating)) +
+  geom_bar(alpha = 0.6) +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Genre vs ESRB Rating",
+    x = "Number of Video Games",
+    y = "Genre",
+    fill = "ESRB Rating"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
     plot.title.position = "panel"
   )
 
-games_cleaned |>
-  ggplot(aes(y = genre, fill = esrb_rating)) +
-  geom_bar()
 
-
-games_cleaned |>
-  ggplot(aes(y = launch_price_usd, fill = esrb_rating)) +
-  geom_bar()
+lp_vs_esrb <- games_cleaned |>
+  ggplot(aes(y = launch_price_usd, x = esrb_rating)) +
+  geom_boxplot(aes(color = esrb_rating, fill = esrb_rating), alpha = 0.6) +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Launch Price vs ESRB Rating",
+    x = "ESRB Rating",
+    y = "Launch Price",
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel",
+    legend.position = "none"
+  )
 
 
 # Saving out all the figures ----
@@ -444,6 +493,10 @@ ggsave(here("figures/gs_vs_micro.png"), plot = gs_vs_micro)
 ggsave(here("figures/eus_vs_micro.png"), plot = eus_vs_micro)
 ggsave(here("figures/jps_vs_micro.png"), plot = jps_vs_micro)
 ggsave(here("figures/nas_vs_micro.png"), plot = nas_vs_micro)
+ggsave(here("figures/y_vs_pt.png"), plot = y_vs_pt)
+ggsave(here("figures/y_vs_pubtier.png"), plot = y_vs_pubtier)
+ggsave(here("figures/esrb_vs_g.png"), plot = esrb_vs_g)
+ggsave(here("figures/lp_vs_esrb.png"), plot = lp_vs_esrb)
 
 
 write_csv(games_cleaned, file = here("data/games_cleaned.csv"))

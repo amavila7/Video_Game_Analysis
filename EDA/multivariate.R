@@ -41,17 +41,59 @@ y_vs_genre_plattype <- games_cleaned |>
 # more people turned to gaming while quarantining at home
 
 
-games_cleaned |>
+main_vs_comp_lp <- games_cleaned |>
   ggplot(aes(x = how_long_to_beat_main_hrs, y = how_long_to_beat_completionist_hrs)) +
-  geom_point(aes(color = launch_price_usd))
+  geom_point(aes(color = launch_price_usd)) +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Length to Beat Main Story \nvs Length to Complete the Game",
+    x = "Main Story\n(Hours)",
+    y = "Complete\n(Hours)",
+    color = "Launch Price\n(USD)"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
 
-games_cleaned |>
+main_vs_comp_plattype <- games_cleaned |>
   ggplot(aes(x = how_long_to_beat_main_hrs, y = how_long_to_beat_completionist_hrs)) +
-  geom_point(aes(color = platform_type))
+  geom_point(aes(color = platform_type)) +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Length to Beat Main Story \nvs Length to Complete the Game",
+    x = "Main Story\n(Hours)",
+    y = "Complete\n(Hours)",
+    color = "Platform Type"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
 
-games_cleaned |>
+esti_vs_gs <- games_cleaned |>
   ggplot(aes(x = estimated_revenue_million_usd, y = global_sales_million)) +
-  geom_point(aes(color = launch_price_usd))
+  geom_point(aes(color = launch_price_usd)) + 
+  theme_minimal() +
+  labs(
+    title = "Distribution of Estimated Revenue vs Global Sales",
+    x = "Estimated Revenue\n(by millions in USD)",
+    y = "Global Sales\n(by millions in USD)",
+    color = "Launch Price"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
 
 # save out figures
 ggsave(here("figures/y_vs_genre_plattype.png"), plot = y_vs_genre_plattype)
+ggsave(here("figures/main_vs_comp_lp.png"), plot = main_vs_comp_lp)
+ggsave(here("figures/main_vs_comp_plattype.png"), plot = main_vs_comp_plattype)
+ggsave(here("figures/esti_vs_gs.png"), plot = esti_vs_gs)
