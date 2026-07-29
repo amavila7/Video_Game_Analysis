@@ -397,6 +397,35 @@ nas_vs_micro <- games_cleaned |>
   )
 
 
+
+## Other finds
+
+games_cleaned |>
+  ggplot(aes(x = year, y = platform_type)) +
+  geom_boxplot(color = "darkgreen") +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Year Released vs Platform Type",
+    x = "Year",
+    y = "Platform Type"
+  ) +
+  theme(
+    axis.title = element_text(family = "Noto Serif"),
+    axis.text = element_text(family = "Noto Serif"),
+    plot.title = element_text(family = "Noto Serif", hjust = 0.5, size = 20),
+    plot.title.position = "panel"
+  )
+
+games_cleaned |>
+  ggplot(aes(y = genre, fill = esrb_rating)) +
+  geom_bar()
+
+
+games_cleaned |>
+  ggplot(aes(y = launch_price_usd, fill = esrb_rating)) +
+  geom_bar()
+
+
 # Saving out all the figures ----
 
 ggsave(here("figures/y_vs_genre.png"), plot = y_vs_genre)

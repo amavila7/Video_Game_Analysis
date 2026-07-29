@@ -41,6 +41,17 @@ y_vs_genre_plattype <- games_cleaned |>
 # more people turned to gaming while quarantining at home
 
 
+games_cleaned |>
+  ggplot(aes(x = how_long_to_beat_main_hrs, y = how_long_to_beat_completionist_hrs)) +
+  geom_point(aes(color = launch_price_usd))
+
+games_cleaned |>
+  ggplot(aes(x = how_long_to_beat_main_hrs, y = how_long_to_beat_completionist_hrs)) +
+  geom_point(aes(color = platform_type))
+
+games_cleaned |>
+  ggplot(aes(x = estimated_revenue_million_usd, y = global_sales_million)) +
+  geom_point(aes(color = launch_price_usd))
 
 # save out figures
 ggsave(here("figures/y_vs_genre_plattype.png"), plot = y_vs_genre_plattype)
