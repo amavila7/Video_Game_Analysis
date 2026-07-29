@@ -463,7 +463,7 @@ lp_vs_esrb <- games_cleaned |>
   labs(
     title = "Distribution of Launch Price vs ESRB Rating",
     x = "ESRB Rating",
-    y = "Launch Price",
+    y = "Launch Price"
   ) +
   theme(
     axis.title = element_text(family = "Noto Serif"),

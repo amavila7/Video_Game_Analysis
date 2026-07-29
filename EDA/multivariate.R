@@ -75,12 +75,12 @@ main_vs_comp_plattype <- games_cleaned |>
     plot.title.position = "panel"
   )
 
-esti_vs_gs <- games_cleaned |>
+esti_vs_gs_lp <- games_cleaned |>
   ggplot(aes(x = estimated_revenue_million_usd, y = global_sales_million)) +
   geom_point(aes(color = launch_price_usd)) + 
   theme_minimal() +
   labs(
-    title = "Distribution of Estimated Revenue vs Global Sales",
+    title = "Distribution of Estimated Revenue vs Global Sales with launch Price",
     x = "Estimated Revenue\n(by millions in USD)",
     y = "Global Sales\n(by millions in USD)",
     color = "Launch Price"
@@ -96,4 +96,4 @@ esti_vs_gs <- games_cleaned |>
 ggsave(here("figures/y_vs_genre_plattype.png"), plot = y_vs_genre_plattype)
 ggsave(here("figures/main_vs_comp_lp.png"), plot = main_vs_comp_lp)
 ggsave(here("figures/main_vs_comp_plattype.png"), plot = main_vs_comp_plattype)
-ggsave(here("figures/esti_vs_gs.png"), plot = esti_vs_gs)
+ggsave(here("figures/esti_vs_gs_lp.png"), plot = esti_vs_gs_lp)
