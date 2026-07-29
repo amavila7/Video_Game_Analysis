@@ -25,7 +25,6 @@ games_cleaned <- read_csv("data/games.csv") |>
     publisher_region = as.factor(publisher_region),
     publisher_tier = as.factor(publisher_tier),
     esrb_rating = as.factor(esrb_rating),
-    launch_price_usd = as.factor(launch_price_usd),
     is_sequel = as.factor(is_sequel),
     is_sequel = fct_recode(is_sequel, "Yes" = "1", "No" = "0"),
     online_multiplayer = factor(online_multiplayer),
@@ -139,8 +138,8 @@ lp_vs_genre <- games_cleaned |>
     plot.title.position = "panel"
   )
 
-# games_cleaned <- games_cleaned |>
-#   mutate(launch_price_usd = as.factor(launch_price_usd))
+games_cleaned <- games_cleaned |>
+  mutate(launch_price_usd = as.factor(launch_price_usd))
 
 # launch price vs genre
 genre_w_lp <- games_cleaned |>
