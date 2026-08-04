@@ -35,7 +35,8 @@ games_cleansed <- game_data |>
     loot_boxes = as.factor(loot_boxes),
     game_pass_available = as.factor(game_pass_available),
     vr_support = as.factor(vr_support),
-    goty_nominated = as.factor(goty_nominated)
+    goty_nominated = as.factor(goty_nominated),
+    goty_won = as.factor(goty_won)
   )
 
 # check distribution
@@ -47,24 +48,25 @@ goty_won_dist <- games_cleansed |>
     x = "Game of the Year Award Won"
   )
 
-# pretty solid balance of the two categories 
+# large imbalance between the two - we will do 1 attempt without imputing & fixing the balance
+# and one attempt with fixing the balance
 
 # initial split ----
-airbnb_split <- initial_split(airbnb_data, prop = 0.8, strata = host_is_superhost)
+game_split <- initial_split(games_cleansed, prop = 0.8, strata = goty_won)
 
-airbnb_training <- training(airbnb_split)
-airbnb_testing <- testing(airbnb_split)
+game_training <- training(game_split)
+game_testing <- testing(game_split)
 
 
 
 # building folds
 # creating v folds
-airbnb_folds <- vfold_cv(airbnb_training, v = 5, repeats = 3, strata = host_is_superhost)
+game_folds <- vfold_cv(game_training, v = 5, repeats = 3, strata = goty_won)
 
 
 # saving out dist and cleaned data sets ---
-save(airbnb_data, file = here("attempt_1/data/airbnb_data.rda"))
-save(airbnb_folds, file = here("attempt_1/data/airbnb_folds.rda"))
-save(airbnb_training, file = here("attempt_1/data/airbnb_training.rda"))
-save(airbnb_testing, file = here("attempt_1/data/airbnb_testing.rda"))
-ggsave("plots/super_host_dist.png", plot = super_host_dist)
+save(games_cleansed, file = here("attempt_1/datasets/game_data.rda"))
+save(game_folds, file = here("attempt_1/datasets/game_folds.rda"))
+save(game_training, file = here("attempt_1/datasets/game_training.rda"))
+save(game_testing, file = here("attempt_1/datasets/game_testing.rda"))
+ggsave("figures/goty_won_dist.png", plot = goty_won_dist)
