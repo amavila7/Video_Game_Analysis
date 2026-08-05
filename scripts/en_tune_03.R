@@ -23,7 +23,7 @@ en_wflow <- workflow() |>
   add_model(en_model) |>
   add_recipe(basic_recipe)
 
-# set seed
+# set seed for parallel processing
 set.seed(728350)
 
 # Create a cluster object and then register: 
