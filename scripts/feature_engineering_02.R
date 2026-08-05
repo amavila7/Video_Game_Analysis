@@ -9,13 +9,12 @@ library(here)
 tidymodels_prefer()
 
 # load data
-load(here("attempt_1/datasets/game_training.rda"))
+load(here("attempt_1/datasets/train_upsampled.rda"))
 
 # building basic recipe ----
 
-basic_recipe <- recipe(goty_won ~ ., data = game_training) |>
+basic_recipe <- recipe(goty_won ~ ., data = train_upsampled) |>
   update_role(game_id, title, publisher, developer, new_role = "id_vars") |>
-  step_rm(goty_won) |>
   step_mutate(
     across(where(is.logical), as.factor)
   ) |>
@@ -33,9 +32,8 @@ basic_recipe |>
   glimpse()
 
 # building basic tree recipe ----
-tree_recipe <- recipe(goty_won ~ ., data = game_training) |>
+tree_recipe <- recipe(goty_won ~ ., data = train_upsampled) |>
   update_role(game_id, title, publisher, developer, new_role = "id_vars") |>
-  step_rm(goty_won) |>
   step_mutate(
     across(where(is.logical), as.factor)
   ) |>

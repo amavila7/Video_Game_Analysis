@@ -11,7 +11,7 @@ tidymodels_prefer()
 
 # load data
 load(here("attempt_1/recipes/basic_recipe.rda"))
-load(here("attempt_1/data/game_folds.rda"))
+load(here("attempt_1/datasets/game_folds.rda"))
 
 # model specifications ----
 en_model <- logistic_reg(mixture = tune(), penalty = tune()) |> 
@@ -23,6 +23,13 @@ en_wflow <- workflow() |>
   add_model(en_model) |>
   add_recipe(basic_recipe)
 
+# set seed
+set.seed(728350)
+
+# Create a cluster object and then register: 
+cl <- makePSOCKcluster(8)
+registerDoParallel(cl)
+
 # hyperparameter tuning values ----
 en_params <- hardhat::extract_parameter_set_dials(en_model) |>
   update(
@@ -33,9 +40,7 @@ en_params <- hardhat::extract_parameter_set_dials(en_model) |>
 # building tuning grid
 en_grid <- grid_regular(en_params, levels = 5)
 
-# Create a cluster object and then register: 
-cl <- makePSOCKcluster(8)
-registerDoParallel(cl)
+
 
 # fit folds
 en_tuned <- en_wflow |>

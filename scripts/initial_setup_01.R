@@ -4,6 +4,7 @@
 library(tidyverse)
 library(tidymodels)
 library(here)
+library(themis)
 
 # handling the conflicts
 tidymodels_prefer()
@@ -48,8 +49,7 @@ goty_won_dist <- games_cleansed |>
     x = "Game of the Year Award Won"
   )
 
-# large imbalance between the two - we will do 1 attempt without imputing & fixing the balance
-# and one attempt with fixing the balance
+# large imbalance between the two - needs upsampling
 
 # initial split ----
 game_split <- initial_split(games_cleansed, prop = 0.8, strata = goty_won)
@@ -58,15 +58,27 @@ game_training <- training(game_split)
 game_testing <- testing(game_split)
 
 
+# now upsampling the training
+recipe_upsample <- recipe(goty_won ~., game_training) |>
+  # 2:1 ratio
+  step_upsample(goty_won, over_ratio = 0.5)
+
+# extract modified train from the recipe
+train_upsampled <- prep(recipe_upsample) |>
+  bake(new_data = NULL)
+
+# verify
+train_upsampled |>
+  count(goty_won)
 
 # building folds
 # creating v folds
-game_folds <- vfold_cv(game_training, v = 5, repeats = 3, strata = goty_won)
+game_folds <- vfold_cv(train_upsampled, v = 5, repeats = 3, strata = goty_won)
 
 
 # saving out dist and cleaned data sets ---
 save(games_cleansed, file = here("attempt_1/datasets/game_data.rda"))
 save(game_folds, file = here("attempt_1/datasets/game_folds.rda"))
-save(game_training, file = here("attempt_1/datasets/game_training.rda"))
+save(train_upsampled, file = here("attempt_1/datasets/train_upsampled.rda"))
 save(game_testing, file = here("attempt_1/datasets/game_testing.rda"))
 ggsave("figures/goty_won_dist.png", plot = goty_won_dist)
