@@ -34,7 +34,7 @@ rf_wflow <- workflow() |>
 # hyperparameter tuning values ----
 rf_params <- hardhat::extract_parameter_set_dials(rf_spec) |>
   update(
-    mtry = mtry(c(1, 8)),
+    mtry = mtry(c(1, 10)),
     min_n = min_n()
   )
 

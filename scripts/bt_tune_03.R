@@ -38,7 +38,7 @@ bt_wflow <- workflow() |>
 bt_params <- hardhat::extract_parameter_set_dials(bt_spec) |>
   update(
     trees = trees(),
-    mtry = mtry(c(1, 36)),
+    mtry = mtry(c(1, 30)),
     min_n = min_n(),
     learn_rate = learn_rate(c(-5, 0))
   )
