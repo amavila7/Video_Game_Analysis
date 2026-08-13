@@ -39,7 +39,7 @@ rf_params <- hardhat::extract_parameter_set_dials(rf_spec) |>
   )
 
 # building tuning grid
-rf_grid <- grid_space_filling(rf_params, size = 30)
+rf_grid <- grid_random(rf_params, size = 20)
 
 # parallel processing
 cl <- makePSOCKcluster(8)
