@@ -36,7 +36,7 @@ knn_params <- hardhat::extract_parameter_set_dials(knn_spec) |>
 set.seed(297135)
 
 # defining grid ----
-knn_grid <- grid_regular(knn_params, levels = 5)
+knn_grid <- grid_random(knn_params, size = 5)
 
 # parallel processing
 cl <- makePSOCKcluster(8)
