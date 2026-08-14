@@ -11,8 +11,8 @@ library(bonsai)
 tidymodels_prefer()
 
 # load data
-load(here("attempt_8/recipes/tree_recipe.rda"))
-load(here("attempt_8/datasets/game_folds.rda"))
+load(here("attempt_1/recipes/tree_recipe.rda"))
+load(here("attempt_1/datasets/game_folds.rda"))
 
 # set seed
 set.seed(93815)
@@ -61,4 +61,4 @@ bt_tuned <- bt_wflow |>
 stopCluster(cl)
 
 # write out results (fitted/trained workflows) ----
-save(bt_tuned, file = here("attempt_8/results/bt_tuned.rda"))
+save(bt_tuned, file = here("attempt_1/results/bt_tuned.rda"))
