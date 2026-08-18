@@ -61,7 +61,8 @@ game_testing <- testing(game_split)
 # now upsampling the training
 recipe_upsample <- recipe(goty_won ~., game_training) |>
   # 2:1 ratio
-  step_upsample(goty_won, over_ratio = 0.5)
+  step_upsample(goty_won, over_ratio = 0.5) |>
+  update_role(game_id, title, publisher, developer, new_role = "id_vars") 
 
 # extract modified train from the recipe
 train_upsampled <- prep(recipe_upsample) |>
