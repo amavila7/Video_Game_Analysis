@@ -22,7 +22,6 @@ basic_recipe <- recipe(goty_won ~ ., data = train_upsampled) |>
   step_unknown(all_nominal_predictors()) |>
   step_impute_mode(all_nominal_predictors()) |>
   step_dummy(all_nominal_predictors()) |>
-  step_zv(all_numeric_predictors()) |>
   step_normalize(all_numeric_predictors())
 
 # check recipe
