@@ -19,9 +19,12 @@ basic_recipe <- recipe(goty_won ~ ., data = train_upsampled) |>
     across(where(is.logical), as.factor)
   ) |>
   step_novel(all_nominal_predictors()) |>
+  step_other(all_nominal_predictors(), threshold = 0.09) |>
   step_unknown(all_nominal_predictors()) |>
   step_impute_mode(all_nominal_predictors()) |>
+  step_impute_mean(all_numeric_predictors()) |>
   step_dummy(all_nominal_predictors()) |>
+  step_zv(all_numeric_predictors()) |>
   step_normalize(all_numeric_predictors())
 
 # check recipe
