@@ -53,7 +53,7 @@ game_test <- game_testing |>
 
 pred_bt <- game_test |>
   bind_cols(predict(final_fit_bt, new_data = game_test, type = "prob")) |>
-  select(game_id, predicted = .pred_1)
+  select(game_id, title, goty_won, predicted = .pred_1)
 
 
 # save results

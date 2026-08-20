@@ -53,7 +53,7 @@ game_test <- game_testing |>
 
 pred_log <- game_test |>
   bind_cols(predict(final_fit_log, new_data = game_test, type = "prob")) |>
-  select(game_id, predicted = .pred_1)
+  select(game_id, title, goty_won, predicted = .pred_1)
 
 # save results
 save(pred_log, file = "attempt_1/final_results/pred_log.rda")
