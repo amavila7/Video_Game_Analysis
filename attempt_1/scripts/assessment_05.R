@@ -51,9 +51,9 @@ save(model_perf_tbl, file = here("figures/model_perf_tbl.rda"))
 
 # building plot
 performance_plot <- ggplot(pred_log, aes(x = goty_won, y = predicted)) +
-  geom_point(alpha = .2, size = 1) +
+  geom_point(alpha = .2) +
   coord_fixed() +
-  theme_minimal(base_size = 14) +
+  theme_minimal() +
   labs(
     x = "Actual Winners",
     y = "Predicted Winners 
