@@ -45,22 +45,24 @@ model_perf_tbl <- tibble(
   round(digits = 4) |>
   knitr::kable()
 
+# yikes they all performed terribly
+
 # save out tbl
 
 save(model_perf_tbl, file = here("figures/model_perf_tbl.rda"))
 
 # building plot
-performance_plot <- ggplot(pred_log, aes(x = goty_won, y = predicted)) +
-  geom_point(alpha = .2) +
+performance_plot <- ggplot(pred_knn, aes(x = goty_won, y = predicted)) +
+  geom_point(alpha = .2, size = 1) +
+  geom_abline(linetype = "dashed", linewidth = 1.3) +
   coord_fixed() +
-  theme_minimal() +
+  theme_minimal(base_size = 14) +
   labs(
     x = "Actual Winners",
     y = "Predicted Winners 
-    (Logistic model/workflow)"
+    (K-Nearest Neighbors model/workflow)"
   )
 
 # save out plot
-
 ggsave("figures/performance_plot.png", plot = performance_plot)
 
