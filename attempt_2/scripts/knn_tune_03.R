@@ -10,8 +10,8 @@ library(doParallel)
 tidymodels_prefer()
 
 # load data
-load(here("attempt_1/recipes/basic_recipe.rda"))
-load(here("attempt_1/datasets/game_folds.rda"))
+load(here("attempt_2/recipes/tree_recipe.rda"))
+load(here("attempt_2/datasets/game_folds.rda"))
 
 # model specification ----
 knn_spec <- 
@@ -24,7 +24,7 @@ knn_spec <-
 # define workflows ----
 knn_wflow <- workflow() |>
   add_model(knn_spec) |>
-  add_recipe(basic_recipe)
+  add_recipe(tree_recipe)
 
 # hyperparameter tuning values ----
 knn_params <- hardhat::extract_parameter_set_dials(knn_spec) |>
@@ -33,7 +33,7 @@ knn_params <- hardhat::extract_parameter_set_dials(knn_spec) |>
   )
 
 # set seed for randomness
-set.seed(297135)
+set.seed(4136290)
 
 # defining grid ----
 knn_grid <- grid_random(knn_params, size = 20)
@@ -53,4 +53,4 @@ knn_tuned <- knn_wflow |>
 stopCluster(cl)
 
 # write out results (fitted/trained workflows) ----
-save(knn_tuned, file = here("attempt_1/results/knn_tuned.rda"))
+save(knn_tuned, file = here("attempt_2/results/knn_tuned.rda"))

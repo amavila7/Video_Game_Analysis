@@ -10,13 +10,13 @@ library(doParallel)
 tidymodels_prefer()
 
 # load data
-load(here("attempt_1/recipes/basic_recipe.rda"))
-load(here("attempt_1/datasets/game_folds.rda"))
+load(here("attempt_2/recipes/basic_recipe.rda"))
+load(here("attempt_2/datasets/game_folds.rda"))
 
 # rm -f .git/index
 
 # set seed for parallel processing
-set.seed(12984)
+set.seed(3463251)
 
 # model specification ----
 log_spec <- logistic_reg() |>
@@ -43,4 +43,4 @@ stopCluster(cl)
 
 
 # writing out results
-save(log_fit, file = "attempt_1/results/log_fit.rda")
+save(log_fit, file = "attempt_2/results/log_fit.rda")

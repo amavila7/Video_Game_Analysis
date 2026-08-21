@@ -10,8 +10,8 @@ library(doParallel)
 tidymodels_prefer()
 
 # load data
-load(here("attempt_1/recipes/basic_recipe.rda"))
-load(here("attempt_1/datasets/game_folds.rda"))
+load(here("attempt_2/recipes/basic_recipe.rda"))
+load(here("attempt_2/datasets/game_folds.rda"))
 
 # model specifications ----
 en_model <- logistic_reg(mixture = tune(), penalty = tune()) |> 
@@ -24,7 +24,7 @@ en_wflow <- workflow() |>
   add_recipe(basic_recipe)
 
 # set seed for parallel processing
-set.seed(728350)
+set.seed(42966)
 
 # Create a cluster object and then register: 
 cl <- makePSOCKcluster(8)
@@ -52,4 +52,4 @@ en_tuned <- en_wflow |>
 stopCluster(cl)
 
 # write out results (fitted/trained workflows) ----
-save(en_tuned, file = here("attempt_1/results/en_tuned.rda"))
+save(en_tuned, file = here("attempt_2/results/en_tuned.rda"))
