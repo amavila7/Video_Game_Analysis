@@ -10,11 +10,11 @@ library(doParallel)
 tidymodels_prefer()
 
 # load data
-load(here("attempt_1/recipes/tree_recipe.rda"))
-load(here("attempt_1/datasets/game_folds.rda"))
+load(here("attempt_2/recipes/tree_recipe.rda"))
+load(here("attempt_2/datasets/game_folds.rda"))
 
 # set seed
-set.seed(891357)
+set.seed(32846)
 
 # model specification ----
 rf_spec <- 
@@ -56,4 +56,4 @@ rf_tuned <- rf_wflow |>
 stopCluster(cl)
 
 # write out results (fitted/trained workflows) ----
-save(rf_tuned, file = here("attempt_1/results/rf_tuned.rda"))
+save(rf_tuned, file = here("attempt_2/results/rf_tuned.rda"))

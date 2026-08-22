@@ -10,7 +10,7 @@ library(doParallel)
 tidymodels_prefer()
 
 # load data
-load(here("attempt_2/recipes/tree_recipe.rda"))
+load(here("attempt_2/recipes/basic_recipe.rda"))
 load(here("attempt_2/datasets/game_folds.rda"))
 
 # model specification ----
@@ -24,7 +24,7 @@ knn_spec <-
 # define workflows ----
 knn_wflow <- workflow() |>
   add_model(knn_spec) |>
-  add_recipe(tree_recipe)
+  add_recipe(basic_recipe)
 
 # hyperparameter tuning values ----
 knn_params <- hardhat::extract_parameter_set_dials(knn_spec) |>
