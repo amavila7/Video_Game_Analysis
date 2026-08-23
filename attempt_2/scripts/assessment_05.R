@@ -11,11 +11,11 @@ library(yardstick)
 tidymodels_prefer()
 
 # load required objects here
-load(here("attempt_1/final_results/pred_log.rda"))
-load(here("attempt_1/final_results/pred_en.rda"))
-load(here("attempt_1/final_results/pred_knn.rda"))
-load(here("attempt_1/final_results/pred_rf.rda"))
-load(here("attempt_1/final_results/pred_bt.rda"))
+load(here("attempt_2/final_results/pred_log.rda"))
+load(here("attempt_2/final_results/pred_en.rda"))
+load(here("attempt_2/final_results/pred_knn.rda"))
+load(here("attempt_2/final_results/pred_rf.rda"))
+load(here("attempt_2/final_results/pred_bt.rda"))
 
 
 # collect roc_auc from all the results
@@ -35,7 +35,7 @@ bt_ra <- pred_bt |>
   roc_auc(goty_won, predicted)
 
 # creating performance table  
-model_perf_tbl <- tibble(
+model_perf_tbl2 <- tibble(
   `Logistic` = log_ra |> pull(.estimate),
   `Elastic Net` = en_ra |> pull(.estimate),
   `K-Nearest Neighbors` = knn_ra |> pull(.estimate),
@@ -47,20 +47,20 @@ model_perf_tbl <- tibble(
 
 # save out tbl
 
-save(model_perf_tbl, file = here("figures/model_perf_tbl.rda"))
+# save(model_perf_tbl2, file = here("figures/model_perf_tbl2.rda"))
 
 # building plot
-performance_plot <- ggplot(pred_log, aes(x = goty_won, y = predicted)) +
-  geom_point(alpha = .2, size = 1) +
-  coord_fixed() +
-  theme_minimal(base_size = 14) +
-  labs(
-    x = "Actual Winners",
-    y = "Predicted Winners 
-    (Logistic model/workflow)"
-  )
+# performance_plot <- ggplot(pred_log, aes(x = goty_won, y = predicted)) +
+#   geom_point(alpha = .2, size = 1) +
+#   coord_fixed() +
+#   theme_minimal(base_size = 14) +
+#   labs(
+#     x = "Actual Winners",
+#     y = "Predicted Winners 
+#     (Logistic model/workflow)"
+#   )
 
 # save out plot
 
-ggsave("figures/performance_plot.png", plot = performance_plot)
+# ggsave("figures/performance_plot.png", plot = performance_plot)
 
