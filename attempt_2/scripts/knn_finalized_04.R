@@ -9,9 +9,9 @@ library(here)
 tidymodels_prefer()
 
 # load required objects
-load(here("attempt_1/results/knn_tuned.rda"))
-load(here("attempt_1/datasets/train_upsampled.rda"))
-load(here("attempt_1/datasets/game_testing.rda"))
+load(here("attempt_2/results/knn_tuned.rda"))
+load(here("attempt_2/datasets/train_upsampled.rda"))
+load(here("attempt_2/datasets/game_testing.rda"))
 
 # finalize workflow ----
 final_wflow_knn <- knn_tuned |> 
@@ -20,7 +20,7 @@ final_wflow_knn <- knn_tuned |>
 
 # train final model ----
 # set seed
-set.seed(8347134)
+set.seed(63215)
 final_fit_knn <- fit(final_wflow_knn, train_upsampled)
 
 # saving final fit
@@ -31,22 +31,6 @@ final_fit_knn <- fit(final_wflow_knn, train_upsampled)
 
 game_test <- game_testing |>
   mutate(
-    platform = as.factor(platform),
-    platform_type = as.factor(platform_type),
-    platform_maker = as.factor(platform_maker),
-    platform_generation = as.factor(platform_generation),
-    genre = as.factor(genre),
-    publisher_region = as.factor(publisher_region),
-    publisher_tier = as.factor(publisher_tier),
-    esrb_rating = as.factor(esrb_rating),
-    is_sequel = as.factor(is_sequel),
-    online_multiplayer = factor(online_multiplayer),
-    dlc_released = as.factor(dlc_released),
-    microtransactions = as.factor(microtransactions),
-    loot_boxes = as.factor(loot_boxes),
-    game_pass_available = as.factor(game_pass_available),
-    vr_support = as.factor(vr_support),
-    goty_nominated = as.factor(goty_nominated),
     goty_won = as.factor(goty_won)
   )
 
@@ -56,4 +40,4 @@ pred_knn <- game_test |>
 
 
 # save results
-save(pred_knn, file = "attempt_1/final_results/pred_knn.rda")
+save(pred_knn, file = "attempt_2/final_results/pred_knn.rda")
